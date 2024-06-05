@@ -1,37 +1,47 @@
 <script setup>
-import { reactive, inject } from 'vue';
-import { useRoute } from 'vue-router';
+import { inject, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const selectMenu = inject('selectMenu');
+const router = useRouter();
 const route = useRoute();
+const state = inject('state');
 
-const state = reactive({
-  selectedMenu: '',
-  selectedOption: ''
+if (!state) {
+  console.error('state is not provided');
+}
+
+const updateSelectedOption = (newPath) => {
+  const options = {
+    '/suggest': 'suggest',
+    '/setMenu': 'setMenu',
+    '/burger': 'burger',
+    '/side': 'side',
+    '/beverage': 'beverage'
+  };
+
+  for (const path in options) {
+    if (newPath.includes(path) && state.selectedOption !== options[path]) {
+      state.selectedOption = options[path];
+      break;
+    }
+  }
+};
+
+watch(() => route.path, (newPath) => {
+  if (state) {
+    updateSelectedOption(newPath);
+  } else {
+    console.error('state is not provided');
+  }
 });
 
-const eat = () => {
-  state.selectedOption = 'eat';
-};
+watch(() => state.selectedOption, (newValue, oldValue) => {
+  console.log(`선택된 옵션이 ${oldValue}에서 ${newValue}(으)로 변경되었습니다.`);
+});
 
-const packaging = () => {
-  state.selectedOption = 'packaging';
-};
 
-const home = () => {
-  // 홈으로 이동하는 로직
-};
-
-const guide = () => {
-  // 사용 안내 페이지로 이동하는 로직
-};
-
-const foodInfo = () => {
-  // 영양 정보 페이지로 이동하는 로직
-};
-
-const lang = () => {
-  // 언어 변경 로직
+const navigateTo = (path) => {
+  router.push(path);
 };
 </script>
 
@@ -39,39 +49,29 @@ const lang = () => {
   <div class="HD">
     <div class="Hd_Top">
       <div class="Hd_Top_Front">
-        <div class="Front_Eat" :class="{ activeOption: state.selectedOption === 'eat' }" @click="eat">매장식사</div>
-        <div class="Front_Packaging" :class="{ activeOption: state.selectedOption === 'packaging' }" @click="packaging">포장주문</div>
+        <div class="Front_Eat" :class="{ activeOption: state.selectedOption === 'eat' }" @click="() => selectMenu('eat')">매장식사</div>
+        <div class="Front_Packaging" :class="{ activeOption: state.selectedOption === 'packaging' }" @click="() => selectMenu('packaging')">포장주문</div>
       </div>
       <div class="Hd_Top_Back">
-        <div @click="home">첫 화면</div>
-        <div @click="guide">사용안내</div>
-        <div @click="foodInfo">영양정보</div>
-        <div @click="lang">Language</div>
+        <div @click="() => navigateTo('/')">첫 화면</div>
+        <div @click="() => navigateTo('/guide')">사용안내</div>
+        <div @click="() => navigateTo('/foodInfo')">영양정보</div>
+        <div @click="() => navigateTo('/lang')">Language</div>
       </div>
     </div>
     <div class="Hd_Nav">
-      <div>
-        <router-link to="/suggest" active-class="activeLink">추천메뉴</router-link>
-      </div>
-      <div>
-        <router-link to="/setMenu" active-class="activeLink">세트메뉴</router-link>
-      </div>
-      <div>
-        <router-link to="/burger" active-class="activeLink">단품</router-link>
-      </div>
-      <div>
-        <router-link to="/side" active-class="activeLink">사이드</router-link>
-      </div>
-      <div>
-        <router-link to="/beverage" active-class="activeLink">음료</router-link>
-      </div>
+      <router-link to="/suggest">추천메뉴</router-link>
+      <router-link to="/setMenu">세트메뉴</router-link>
+      <router-link to="/burger">단품</router-link>
+      <router-link to="/side" class="navButton" active-cl ass="activeLink">사이드</router-link>
+      <router-link to="/beverage" class="navButton" active-class="activeLink">음료</router-link>
     </div>
   </div>
 </template>
 
 <style scoped>
 .HD {
-    height: 10%
+    height: 10%;
 }
 .Hd_Top {
   display: flex;
@@ -88,23 +88,20 @@ const lang = () => {
   padding: 5px;
   margin-right: 10px;
 }
-.Front_Eat {
-  background-color: #FFF;
+.Front_Eat, .Front_Packaging {
   border-radius: 30px;
   width: 80px;
   text-align: center;
-  color: #000; 
   cursor: pointer;
   border: 1px solid #000;
 }
+.Front_Eat {
+  background-color: #FFF;
+  color: #000; 
+}
 .Front_Packaging {
-  border: 1px solid #FFF;
-  border-radius: 30px;
-  width: 80px;
-  text-align: center;
+  background-color: #FFF;
   color: #000;
-  cursor: pointer;
-  border: 1px solid #000;
 }
 .Hd_Top_Back {
   display: flex;
@@ -124,18 +121,16 @@ const lang = () => {
   display: flex;
   margin: 5px;
 }
-
 .activeOption {
   background-color: #000;
   color: #fff;
 }
 
-.activeLink {
-  background-color: red; 
-  color: white;
-}
-
-.Hd_Nav > div {
+.Hd_Nav .router-link-exact-active {
+    background-color: red;
+    color: #FFF;
+  }
+.Hd_Nav a {
   display: flex;
   width: 20%;
   height: 40px;

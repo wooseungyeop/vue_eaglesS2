@@ -1,29 +1,29 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { onMounted, defineProps, defineEmits } from 'vue';
+import { useMenuStore } from '@/stores/menuStore';
 
-const menuItems = ref([]);
+const store = useMenuStore();
+const props = defineProps({
+  chunk: Array
+});
+const emit = defineEmits(['item-selected']);
 
-onMounted(async () => {
-  const response = await fetch('../../data/suggestMenu.json');
-  const data = await response.json();
-  menuItems.value = data;
+onMounted(() => {
+  store.fetchMenuItems('recommended');
 });
 
-const chunkedMenuItems = computed(() => {
-  const chunks = [];
-  for (let i = 0; i < menuItems.value.length; i += 3) {
-    chunks.push(menuItems.value.slice(i, i + 3));
-  }
-  return chunks;
-});
+function selectItem(item) {
+  emit('item-selected', item);
+}
+
 </script>
 
 <template>
   <div class="Sc_Section_con">
     <div class="Section_Menu">
       <div class="Section_Menu_con">
-        <div class="Menu_con_row" v-for="(chunk, index) in chunkedMenuItems" :key="index">
-          <div class="con_row_card" v-for="(item, index) in chunk" :key="index">
+        <div class="Menu_con_row" v-for="(chunk, index) in store.chunkedMenuItems" :key="index">
+          <div class="con_row_card" v-for="(item, idx) in chunk" :key="idx" @click="selectItem(item)">
             <img :src="item.img" alt="">
             <p>{{ item.name }}</p>
             <p>{{ item.price }}원</p>
@@ -36,47 +36,42 @@ const chunkedMenuItems = computed(() => {
 
 <style scoped>
 .Sc_Section_con {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border: 1px solid #000;
 }
-
 .Section_Menu {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
-
 .Section_Menu_con {
-    width: 100%;
-    overflow-y: scroll;
+  overflow-y: scroll;
+  width: 100%;
 }
-
 .Menu_con_row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
-
 .con_row_card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: calc(100% / 3 - 10px);
-    height: 200px;
-    margin: 5px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 3 - 10px);
+  height: 200px;
+  margin: 5px;
+  cursor: pointer;
 }
-
-.con_row_card>img {
-    width: 95%;
-    height: auto;
+.con_row_card > img {
+  width: 95%;
+  height: auto;
 }
-
-.con_row_card>p {
-    text-align: center;
+.con_row_card > p {
+  text-align: center;
 }
 </style>
-

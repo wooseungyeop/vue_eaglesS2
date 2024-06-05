@@ -1,5 +1,45 @@
 <script setup>
+import { ref, watch, defineProps, computed } from 'vue';
 
+const props = defineProps({
+  selectedItem: Object
+});
+
+const selectedItems = ref([]);
+
+watch(() => props.selectedItem, (newItem) => {
+  if (newItem) {
+    const existingItem = selectedItems.value.find(item => item.id === newItem.id);
+    if (existingItem) {
+      existingItem.quantity += 1;  // 기존 아이템의 수량을 증가
+    } else {
+      selectedItems.value.push({ ...newItem, quantity: 1 });  // 새 아이템 추가
+    }
+  }
+}, { deep: true });
+
+const incrementQuantity = (item) => {
+  item.quantity++;
+};
+
+const decrementQuantity = (item) => {
+  if (item.quantity > 1) {
+    item.quantity--;
+  }
+};
+
+const removeItem = (item) => {
+  const index = selectedItems.value.indexOf(item);
+  if (index !== -1) {
+    selectedItems.value.splice(index, 1);
+  }
+};
+
+const totalPrice = computed(() => {
+  return selectedItems.value.reduce((total, item) => {
+    return total + (item.price * item.quantity);
+  }, 0);
+});
 </script>
 
 
@@ -9,11 +49,11 @@
         <div class="Footer_Top">
             <div class="Footer_Top_left">
                 <div>주문수량</div>
-                <div>4</div>
+                <div>{{ selectedItems.length }}</div>
             </div>
             <div class="Footer_Top_Right">
                 <div>주 문 금 액</div>
-                <div>13,300</div>
+                <div>{{ totalPrice }}</div>
             </div>
         </div>
         <div class="Footer_Info_Box">
@@ -28,85 +68,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr v-for="(item, index) in selectedItems" :key="index">
                         <td class="col-menu">
-                            <div class="menu-name">메뉴명</div>
-                            <div class="menu-option">- 메뉴옵션</div>
+                            <div class="menu-name">{{ item.name }}</div>
+                            <div class="menu-option">{{ item.option }}</div>
                         </td>
                         <td class="col-quantity">
                             <div class="quantity-con">
-                                <div class="quantity-PlusMino" onclick='Mino()'> - </div>
-                                <div>수량</div>
-                                <div class="quantity-PlusMino" onclick='Plus()'> + </div>
+                                <button @click="decrementQuantity(item)" :disabled="item.quantity <= 1">-</button>
+                                <div>{{ item.quantity }}</div>
+                                <button @click="incrementQuantity(item)">+</button>
                             </div>
                         </td>
                         <td class="col-price">
                             <div class="price-con">
-                                <div>메뉴가격</div>
-                                <div class="price-Del" onclick='Del()'> x </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td class="col-menu">
-                            <div class="menu-name">메뉴명</div>
-                            <div class="menu-option">- 메뉴옵션</div>
-                        </td>
-                        <td class="col-quantity">
-                            <div class="quantity-con">
-                                <div class="quantity-PlusMino" onclick='Mino()'> - </div>
-                                <div>수량</div>
-                                <div class="quantity-PlusMino" onclick='Plus()'> + </div>
-                            </div>
-                        </td>
-                        <td class="col-price">
-                            <div class="price-con">
-                                <div>메뉴가격</div>
-                                <div class="price-Del" onclick='Del()'> x </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td class="col-menu">
-                            <div class="menu-name">메뉴명</div>
-                            <div class="menu-option">- 메뉴옵션</div>
-                        </td>
-                        <td class="col-quantity">
-                            <div class="quantity-con">
-                                <div class="quantity-PlusMino" onclick='Mino()'> - </div>
-                                <div>수량</div>
-                                <div class="quantity-PlusMino" onclick='Plus()'> + </div>
-                            </div>
-                        </td>
-                        <td class="col-price">
-                            <div class="price-con">
-                                <div>메뉴가격</div>
-                                <div class="price-Del" onclick='Del()'> x </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td class="col-menu">
-                            <div class="menu-name">메뉴명</div>
-                            <div class="menu-option">- 메뉴옵션</div>
-                        </td>
-                        <td class="col-quantity">
-                            <div class="quantity-con">
-                                <div class="quantity-PlusMino" onclick='Mino()'> - </div>
-                                <div>수량</div>
-                                <div class="quantity-PlusMino" onclick='Plus()'> + </div>
-                            </div>
-                        </td>
-                        <td class="col-price">
-                            <div class="price-con">
-                                <div>메뉴가격</div>
-                                <div class="price-Del" onclick='Del()'> x </div>
+                                <div>{{ item.price * item.quantity}}원</div>
+                                <div class="price-Del" @click="removeItem(item)"> x </div>
                             </div>
                         </td>
                     </tr>
@@ -137,6 +114,8 @@
   width: 800px;
   position: fixed;
   bottom: 0;
+  background-color: #fff;
+  border-radius: 20px;
 
 }
 
@@ -147,7 +126,7 @@
 }
 
 .Footer_Top {
-  height: 20%;
+  height: 10%;
   display: flex;
   justify-content: space-around;
   border: 1px solid #888;
@@ -176,7 +155,7 @@
 }
 
 .Footer_Info_Box {
-  height: 60%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   border: 1px solid #888;
@@ -250,7 +229,7 @@
 }
 
 .Footer_Under {
-  height: 20%;
+  height: 10%;
   display: flex;
   justify-content: space-around;
   border: 1px solid #000;
