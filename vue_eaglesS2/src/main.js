@@ -1,6 +1,6 @@
 import './assets/css/Lee-css.css'
 import './assets/css/reset.css'
-import './assets/font/font.css'
+import './assets/css/font.css'
 import './assets/js/video.js'
 import './assets/css/mainmenu-popup.css'
 // import './components/mainMenu/MainMenu_PopUp-List/MainMenu_PopUp-List.vue'
