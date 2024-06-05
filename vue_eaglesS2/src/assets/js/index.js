@@ -2,9 +2,8 @@
 setTimeout(function () {
   document.getElementById('btnfadeIn').classList.add('fade-out');
 }, 31200);
-function skip(){
-    document.getElementById('btnfadeIn').classList.add('fade-out');
-}
+
+
 document.addEventListener("DOMContentLoaded", function() {
   var div = document.querySelector(".back_Box_All");
   

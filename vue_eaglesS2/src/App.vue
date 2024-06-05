@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+const skip = () => {
+  document.getElementById("btnfadeIn").classList.add("fade-out");
+};
+</script>
 
 <template>
   <body>
