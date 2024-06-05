@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "콜라",
+        "option": "",
+        "price": 2600,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_01.png"
+    },
+    {
+        "id": 2,
+        "name": "제로콜라",
+        "option": "",
+        "price": 2600,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_02.png"
+    },
+    {
+        "id": 3,
+        "name": "스프라이트",
+        "option": "",
+        "price": 2600,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_03.png"
+    },
+    {
+        "id": 4,
+        "name": "스프라이트제로",
+        "option": "",
+        "price": 2600,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_04.png"
+    },
+    {
+        "id": 5,
+        "name": "환타오렌지",
+        "option": "",
+        "price": 2600,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_05.png"
+    },
+    {
+        "id": 6,
+        "name": "오렌지주스",
+        "option": "",
+        "price": 2100,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_06.png"
+    },
+    {
+        "id": 7,
+        "name": "아이스아메리카노",
+        "option": "",
+        "price": 2400,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_07.png"
+    },
+    {
+        "id": 8,
+        "name": "생수",
+        "option": "",
+        "price": 1000,
+        "img": "js_eaglesS2/img/KFC_Menu/beverage/bv_08.png"
+    }
+]
