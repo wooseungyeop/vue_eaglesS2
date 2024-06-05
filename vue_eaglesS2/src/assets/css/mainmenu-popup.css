@@ -1,0 +1,266 @@
+.popup-list {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.popup-container {
+    width: 40%;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.popup-header p {
+    width: 100%;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.popup-content {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.order-table {
+    height: 370px;
+    background-color: #D3D3D3;
+}
+
+.list {
+    width: 100%;
+}
+
+.meue-list {
+    height: 40px;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+}
+
+.imgs-box {
+    margin-top: 30px;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.additional-items {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.additional-items_sub {
+    border: 1px solid red;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.item-thumbails {
+    border: 1px #999;
+    margin-top: 20px;
+    width: 88%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.thumbnail {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+}
+
+.arrow-button {
+    border: 1px solid red;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.popup-buttons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: space-around;
+}
+
+.previous-button {
+    width: 150px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.next-button {
+    width: 150px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.previous-button p {
+    display: flex;
+    align-content: center;
+}
+
+.previous-button:hover {
+    background-color: red;
+}
+
+.previous-button:hover a {
+    color: white;
+}
+
+
+.next-button:hover {
+    background-color: red;
+}
+
+.next-button:hover a {
+    color: white;
+}
+
+.popup-overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.popup-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.final-amount {
+    width: 30%;
+    height: 300px;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.final-amount_sub {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    font-size: 30px;
+}
+
+.final-amount_sub p {
+    margin-left: -25px;
+}
+
+.final-amount_sub div {
+    color: red;
+    margin-left: 30px;
+}
+
+.payment-options {
+    padding: 10px 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 30px;
+}
+
+.payment-options p {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.dine-options {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 0 0;
+    width: 100%;
+}
+
+.dine-in {
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.take-out {
+    margin: 0 0 0 60px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.popup-buttons02 {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0 0 0;
+}
+
+.previous-button02 {
+    width: 150px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.next-button02 {
+    width: 150px;
+    margin: 0 0 0 60px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.previous-button02:hover {
+    background-color: red;
+    color: white;
+}
+
+.next-button02:hover {
+    background-color: red;
+    color: white;
+
+}
+.next-button02:hover a {
+color: white;
+}

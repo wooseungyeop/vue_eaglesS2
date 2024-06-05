@@ -1,42 +1,5 @@
-<script setup>
-import MainComponent from "./components/mainIndex/MainComponent.vue";
-const popUp = () => {
-    const element = document.getElementsByClassName('popup-list')[0];
-    if (element) {
-        element.style.display = 'block';
-    }
-}
-
-const popBack = () => {
-    const element = document.getElementsByClassName('popup-list')[0];
-    if (element) {
-        element.style.display = 'none';
-    }
-}
-
-const popUp_final = () => {
-    const element = document.getElementsByClassName('popup-overlay')[0];
-    if (element) {
-        element.style.display = 'block';
-    }
-}
-
-
-const popUp_myList = () =>{
-    const element = document.getElementsByClassName('popup-overlay')[0];
-    if (element) {
-        element.style.display = 'none';
-    }
-}
-
-const skip = () => {
-  document.getElementById("btnfadeIn").classList.add("fade-out");
-};
-</script>
-
 <template>
-
-<section class="popup-list ">
+        <section class="popup-list ">
       <!-- 
       * display: none; 으로 인한 안보이는거니 참고
     -->
@@ -144,12 +107,12 @@ const skip = () => {
                 </div>
               </div>
               <div class="popup-buttons">
-                <div class="previous-button" @click="popBack()">
+                <div class="previous-button" onclick="popBack()">
                   <p>
                     <a>이전</a>
                   </p>
                 </div>
-                <div class="next-button" @click="popUp_final()">
+                <div class="next-button" onclick="popUp_final()">
                   <p>
                     <a>결제하기</a>
                   </p>
@@ -161,47 +124,4 @@ const skip = () => {
 
       </div>
     </section>
-    <!-- 
-      * display: none; 으로 인한 안보이는거니 참고
-    -->
-    <section class="popup-overlay">
-
-      <!-- 
-      * display: none; 으로 인한 안보이는거니 참고
-    -->
-      <div class="popup-inner">
-        <div class="final-amount">
-          <div class="final-amount_sub">
-            <p>최종 결제 금액</p>
-            <div>
-              <p>2조억 ㅋㅋ</p>
-            </div>
-          </div>
-
-          <div class="payment-options">
-            <p>식사 방식을 선택해주세요.</p>
-
-            <div class="dine-options">
-              <div class="dine-in">
-                매장 식사
-              </div>
-              <div class="take-out">
-                포장 주문
-              </div>
-            </div>
-          </div>
-          <div class="popup-buttons02">
-            <div class="previous-button02" @click ="popUp_myList()">
-              이전
-            </div>
-            <div class="next-button02" @click ="popUp_myList" >
-              <a href="./payment.html">다음</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- 승엽님 -->
 </template>
-
-<style scoped></style>
