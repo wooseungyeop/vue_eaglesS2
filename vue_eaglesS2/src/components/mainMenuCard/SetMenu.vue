@@ -1,21 +1,20 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { onMounted, computed, defineEmits } from 'vue';
+import { useMenuStore } from '@/stores/menuStore';
 
-const menuItems = ref([]);
+const store = useMenuStore();
+const emit = defineEmits(['item-selected']);
 
-onMounted(async () => {
-  const response = await fetch('../../data/setMenu.json');
-  const data = await response.json();
-  menuItems.value = data;
+onMounted(() => {
+  store.fetchMenuItems('setMenu');
 });
 
-const chunkedMenuItems = computed(() => {
-  const chunks = [];
-  for (let i = 0; i < menuItems.value.length; i += 3) {
-    chunks.push(menuItems.value.slice(i, i + 3));
-  }
-  return chunks;
-});
+// store.chunkedMenuItems를 직접 참조하기 위해 reactive ref로 만들어줍니다.
+const chunkedMenuItems = computed(() => store.chunkedMenuItems);
+
+function selectItem(item) {
+  emit('item-selected', item);
+}
 </script>
 
 <template>
@@ -23,7 +22,7 @@ const chunkedMenuItems = computed(() => {
     <div class="Section_Menu">
       <div class="Section_Menu_con">
         <div class="Menu_con_row" v-for="(chunk, index) in chunkedMenuItems" :key="index">
-          <div class="con_row_card" v-for="(item, index) in chunk" :key="index">
+          <div class="con_row_card" v-for="(item, index) in chunk" :key="index" @click="selectItem(item)">
             <img :src="item.img" alt="">
             <p>{{ item.name }}</p>
             <p>{{ item.price }}원</p>
@@ -36,6 +35,7 @@ const chunkedMenuItems = computed(() => {
 
 <style scoped>
 .Sc_Section_con {
+    border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,9 +43,10 @@ const chunkedMenuItems = computed(() => {
 }
 
 .Section_Menu {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .Section_Menu_con {

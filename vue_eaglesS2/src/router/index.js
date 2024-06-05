@@ -1,21 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Suggest from '../components/mainMenu/Suggest.vue';
-import SetMenu from '../components/mainMenu/SetMenu.vue';
-import Burger from '../components/mainMenu/Burger.vue';
-import Side from '../components/mainMenu/Side.vue';
-import Beverage from '../components/mainMenu/Beverage.vue';
-
-const routes = [
-  { path: '/suggest', component: Suggest },
-  { path: '/setMenu', component: SetMenu },
-  { path: '/burger', component: Burger },
-  { path: '/side', component: Side },
-  { path: '/beverage', component: Beverage }
-];
+import Suggest from '../components/mainMenuCard/Suggest.vue';
+import SetMenu from '../components/mainMenuCard/SetMenu.vue';
+import Burger from '../components/mainMenuCard/Burger.vue';
+import Side from '../components/mainMenuCard/Side.vue';
+import Beverage from '../components/mainMenuCard/Beverage.vue';
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: [
+    { path: '/', redirect: '/suggest' },
+    { path: '/suggest', name: 'suggest', component: Suggest },
+    { path: '/setMenu', name: 'setMenu', component: SetMenu },
+    { path: '/burger', name: 'burger', component: Burger },
+    { path: '/side', name: 'side', component: Side },
+    { path: '/beverage', name: 'beverage', component: Beverage }
+  ]
 });
 
 export default router;

@@ -1,27 +1,34 @@
 <script setup>
-import { reactive, provide } from 'vue';
+import { provide, reactive, ref } from 'vue';
 import Header from '../mainMenu/Header.vue';
 import Section from '../mainMenu/Section.vue';
 import Footer from '../mainMenu/Footer.vue';
 
+
+// 상태 관리
 const state = reactive({
-  selectedMenu: ''
+  selectedOption: 'suggest'
 });
 
-const selectMenu = (menu) => {
-  state.selectedMenu = menu;
+provide('state', state);
+
+const selectOption = (option) => {
+  state.selectedOption = option;
 };
 
-// 상태와 함수를 자식 컴포넌트에 제공
-provide('selectMenu', selectMenu);
-provide('selectedMenu', state.selectedMenu);
+const selectedItem = ref({});
+function handleItemSelected(item) {
+  selectedItem.value = item;
+}
+
+console.log(state.selectedOption);
 </script>
 
 <template>
   <div class="All_Box">
     <Header/>
-    <Section/>
-    <Footer/>
+    <Section @item-selected="handleItemSelected"/>
+    <Footer :selectedItem="selectedItem" />
   </div>
 </template>
 
