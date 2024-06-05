@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "닭껍질튀김",
+        "option": "",
+        "price": 1900,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_01.png"
+    },
+    {
+        "id": 2,
+        "name": "프렌치프라이",
+        "option": "",
+        "price": 3000,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_02.png"
+    },
+    {
+        "id": 3,
+        "name": "텐더 2조각",
+        "option": "",
+        "price": 3100,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_03.png"
+    },
+    {
+        "id": 4,
+        "name": "너겟 4조각",
+        "option": "",
+        "price": 2300,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_04.png"
+    },
+    {
+        "id": 5,
+        "name": "너겟 6조각",
+        "option": "",
+        "price": 3300,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_05.png"
+    },
+    {
+        "id": 6,
+        "name": "버터비스켓",
+        "option": "",
+        "price": 2600,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_06.png"
+    },
+    {
+        "id": 7,
+        "name": "에그타르트",
+        "option": "",
+        "price": 2300,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_07.png"
+    },
+    {
+        "id": 8,
+        "name": "롱치즈스틱",
+        "option": "",
+        "price": 2100,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_08.png"
+    },
+    {
+        "id": 9,
+        "name": "코울슬로",
+        "option": "",
+        "price": 2100,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_09.png"
+    },
+    {
+        "id": 10,
+        "name": "콘샐러드",
+        "option": "",
+        "price": 2100,
+        "img": "js_eaglesS2/img/KFC_Menu/side/sd_10.png"
+    }
+]
