@@ -58,7 +58,7 @@
 .EasyPayment_box_card1>img {
     width: 40%;
     height: auto;
-    min-height: 65px;
+    min-height: 50px;
     cursor: pointer;
 }
 
@@ -87,7 +87,7 @@
 .EasyPayment_box_card2>img {
     width: 40%;
     height: auto;
-    min-height: 65px;
+    min-height: 50px;
     cursor: pointer;
 }
 
