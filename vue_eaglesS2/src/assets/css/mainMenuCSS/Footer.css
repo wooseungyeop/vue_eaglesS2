@@ -65,12 +65,17 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #888;
-  overflow-y: scroll;
+  overflow-y: auto; /* 스크롤 가능하도록 설정 */
+  scroll-snap-type: y mandatory; /* 수직 스크롤에 스냅 적용 */
 }
 
 .Footer_Info_Box table {
   width: 100%;
   table-layout: fixed;
+}
+
+.Footer_Info_Box tr {
+  scroll-snap-align: start; /* 각 행의 시작 부분에서 스냅 */
 }
 
 .Footer_Info_Box th,
@@ -111,6 +116,7 @@
   background-color: red;
   color: #fff;
   border-radius: 5px;
+  position: relative;
 }
 
 .quantityPlus {
@@ -123,6 +129,7 @@
   background-color: red;
   color: #fff;
   border-radius: 5px;
+  position: relative;
 }
 
 .col-price {
@@ -152,6 +159,7 @@
   background-color: #999;
   color: #fff;
   border-radius: 5px;
+  position: relative;
 }
 
 .Footer_Under {
@@ -256,4 +264,58 @@
 .menu-option {
   margin-left: 20px;
   font-size: 14px;
+}
+
+.quantityMinus::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.quantityMinus:hover::after {
+  opacity: 1;
+}
+
+.quantityPlus::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.quantityPlus:hover::after {
+  opacity: 1;
+}
+
+.price-Del::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.price-Del:hover::after {
+  opacity: 1;
 }

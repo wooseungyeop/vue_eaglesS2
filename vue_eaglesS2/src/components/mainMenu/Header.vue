@@ -1,5 +1,5 @@
 <script setup>
-import { inject, watch } from "vue";
+import { reactive, ref, inject, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
@@ -10,8 +10,17 @@ if (!state) {
   console.error("state is not provided");
 }
 
+const orderOption = ref("eat");
+
+// 메뉴 선택을 처리하는 함수
+const selectMenu = (menu) => {
+  orderOption.value = menu;
+  console.log(orderOption.value);
+};
+
 const updateSelectedOption = (newPath) => {
   const options = {
+    "/": "suggest",
     "/suggest": "suggest",
     "/setMenu": "setMenu",
     "/burger": "burger",
@@ -58,14 +67,14 @@ const navigateTo = (path) => {
       <div class="Hd_Top_Front">
         <div
           class="Front_Eat"
-          :class="{ activeOption: state.selectedOption === 'eat' }"
+          :class="{ activeOption: orderOption === 'eat' }"
           @click="() => selectMenu('eat')"
         >
           매장식사
         </div>
         <div
           class="Front_Packaging"
-          :class="{ activeOption: state.selectedOption === 'packaging' }"
+          :class="{ activeOption: orderOption === 'packaging' }"
           @click="() => selectMenu('packaging')"
         >
           포장주문

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, defineProps, defineEmits } from "vue";
 import { useMenuStore } from "@/stores/menuStore";
+import "animate.css";
 
 const store = useMenuStore();
 const props = defineProps({
@@ -25,6 +26,7 @@ function selectItem(item) {
           class="Menu_con_row"
           v-for="(chunk, index) in store.chunkedMenuItems"
           :key="index"
+          :class="{ 'last-row': index === store.chunkedMenuItems.length - 1 }"
         >
           <div
             class="con_row_card"
@@ -33,8 +35,8 @@ function selectItem(item) {
             @click="selectItem(item)"
           >
             <img :src="item.img" alt="" />
-            <p>{{ item.name }}</p>
-            <p>{{ item.price }}원</p>
+            <p class="cardName">{{ item.name }}</p>
+            <p class="cardPrice">{{ item.price.toLocaleString("ko-KR") }}원</p>
           </div>
         </div>
       </div>
