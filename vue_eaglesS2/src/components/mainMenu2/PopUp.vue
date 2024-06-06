@@ -1,17 +1,40 @@
 <script setup>
-import PopUp-Container from "./mainmenu_header/MainMenu_PopUp-Container.vue";
-import PopUp-List from "./mainmenu_header/MainMenu_PopUp-List.vue";
-import PopUp-Imgs-Box from "./mainmenu_body/MainMenu_Imgs-Box.vue";
-import PopUp-Order-Table from "./mainmenu_body/MainMenu_PopUp-Order-Table.vue";
-import PopUp-Sum-List from "./mainmenu_body/MainMenu_PopUp-Sum-List.vue";
-import PopUp-Buttons from "./mainmenu_footer/MainMenu_popup-buttons.vue";
+import PopUpContainer from "./mainmenu_popup-list/mainmenu_header/MainMenu_PopUp-Container.vue";
+import PopUpOrderTable from "./mainmenu_popup-list/mainmenu_body/MainMenu_PopUp-Order-Table.vue";
+import PopUpSumList from "./mainmenu_popup-list/mainmenu_body/MainMenu_PopUp-Sum-List.vue";
+import ImgsBox from "./mainmenu_popup-list/mainmenu_body/MainMenu_Imgs-Box.vue";
+import PopUpButtons from "./mainmenu_popup-list/mainmenu_footer/MainMenu_popup-buttons.vue";
+
+import FinalAmountSub from "./mainmenu_popup-overlay/popup-overlay_header/Final-Amount-sub.vue";
+import PayMentOptions from "./mainmenu_popup-overlay/popup-overlay_body/PayMent-Options.vue";
+import PopUpButton02 from "./mainmenu_popup-overlay/popup-overlay_footer/PopUp-Button02.vue";
+
+const popUp = () => {
+  const element = document.getElementsByClassName("popup-list")[0];
+  if (element) {
+    element.style.display = "block";
+  }
+};
 </script>
 
 <template>
-    <PopUp-Container/>
-    <PopUp-List/>
-    <PopUp-Imgs-Box/>
-    <PopUp-Order-Table/>
-    <PopUp-Sum-List/>
-    <PopUp-Buttons/>
+  <div class="popup-list">
+    <div class="popup-container">
+      <PopUpContainer />
+      <PopUpOrderTable />
+      <PopUpSumList />
+      <ImgsBox />
+      <PopUpButtons />
+    </div>
+  </div>
+
+  <div class="popup-overlay">
+    <div class="popup-inner">
+      <div class="final-amount">
+        <FinalAmountSub />
+        <PayMentOptions />
+        <PopUpButton02 />
+      </div>
+    </div>
+  </div>
 </template>
