@@ -1,20 +1,20 @@
 <script setup>
-import { inject, defineEmits } from 'vue';
-import Suggest from '@/components/mainMenuCard/Suggest.vue';
-import SetMenu from '@/components/mainMenuCard/SetMenu.vue';
-import Burger from '@/components/mainMenuCard/Burger.vue';
-import Side from '@/components/mainMenuCard/Side.vue';
-import Beverage from '@/components/mainMenuCard/Beverage.vue';
+import { inject, defineEmits } from "vue";
+import Suggest from "@/components/mainMenu/mainMenuCard/Suggest.vue";
+import SetMenu from "@/components/mainMenu/mainMenuCard/SetMenu.vue";
+import Burger from "@/components/mainMenu/mainMenuCard/Burger.vue";
+import Side from "@/components/mainMenu/mainMenuCard/Side.vue";
+import Beverage from "@/components/mainMenu/mainMenuCard/Beverage.vue";
 
-const state = inject('state');
-const emit = defineEmits(['item-selected']);
+const state = inject("state");
+const emit = defineEmits(["item-selected"]);
 
 function handleItemSelected(item) {
-  emit('item-selected', item);
+  emit("item-selected", item);
 }
 
 if (!state) {
-  console.error('state is not provided');
+  console.error("state is not provided");
 }
 console.log(state.selectedOption);
 </script>
@@ -40,12 +40,5 @@ console.log(state.selectedOption);
 </template>
 
 <style scoped>
-article {
-  height: 50%;
-  width: 800px;
-}
-.Sc_Section {
-  padding: 10px;
-  height: 98%;
-}
+@import "@/assets/css/mainMenuCSS/Section.css";
 </style>
