@@ -36,6 +36,7 @@ console.log(state.selectedOption);
   width: 800px;
   height: 100vh;
   margin: auto;
+
   border: 1px solid #000;
 }
 </style>
