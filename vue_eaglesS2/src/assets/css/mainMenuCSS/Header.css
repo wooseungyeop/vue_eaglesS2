@@ -27,10 +27,12 @@
 .Front_Eat {
   background-color: #fff;
   color: #000;
+  position: relative;
 }
 .Front_Packaging {
   background-color: #fff;
   color: #000;
+  position: relative;
 }
 .Hd_Top_Back {
   display: flex;
@@ -57,7 +59,7 @@
 
 .Hd_Nav .router-link-exact-active {
   background-color: red;
-  color: #fff;
+  color: #000;
 }
 .Hd_Nav a {
   display: flex;
@@ -72,4 +74,59 @@
   margin: 2px;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+}
+
+.Hd_Nav a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.Hd_Nav a:hover::after {
+  opacity: 1;
+}
+
+.Front_Eat::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.Front_Eat:hover::after {
+  opacity: 1;
+}
+
+.Front_Packaging::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.Front_Packaging:hover::after {
+  opacity: 1;
 }

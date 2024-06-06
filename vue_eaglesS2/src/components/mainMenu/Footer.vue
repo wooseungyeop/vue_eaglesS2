@@ -12,13 +12,13 @@ watch(
   () => props.selectedItem,
   (newItem) => {
     if (newItem) {
-      const existingItem = selectedItems.value.find(
+      // 배열 내에서 동일한 id를 가진 아이템이 있는지 확인
+      const itemExists = selectedItems.value.some(
         (item) => item.id === newItem.id
       );
-      if (existingItem) {
-        existingItem.quantity += 1; // 기존 아이템의 수량을 증가
-      } else {
-        selectedItems.value.push({ ...newItem, quantity: 1 }); // 새 아이템 추가
+      if (!itemExists) {
+        // 중복되지 않는 경우에만 아이템을 배열에 추가
+        selectedItems.value.push({ ...newItem, quantity: 1 });
       }
     }
   },
