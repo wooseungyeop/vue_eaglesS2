@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed, defineEmits } from "vue";
+import { onMounted, defineEmits } from "vue";
 import { useMenuStore } from "@/stores/menuStore";
 
 const store = useMenuStore();
@@ -8,9 +8,6 @@ const emit = defineEmits(["item-selected"]);
 onMounted(() => {
   store.fetchMenuItems("setMenu");
 });
-
-// store.chunkedMenuItems를 직접 참조하기 위해 reactive ref로 만들어줍니다.
-const chunkedMenuItems = computed(() => store.chunkedMenuItems);
 
 function selectItem(item) {
   emit("item-selected", item);
@@ -29,8 +26,8 @@ function selectItem(item) {
         >
           <div
             class="con_row_card"
-            v-for="(item, index) in chunk"
-            :key="index"
+            v-for="(item, idx) in chunk"
+            :key="idx"
             @click="selectItem(item)"
           >
             <img :src="item.img" alt="" />

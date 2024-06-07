@@ -81,6 +81,10 @@ const totalPrice = computed(() => {
     new Intl.NumberFormat("ko-KR", { style: "decimal" }).format(total) + "원"
   );
 });
+
+const removeAllItems = () => {
+  selectedItems.value = [];
+};
 </script>
 
 <template>
@@ -153,10 +157,10 @@ const totalPrice = computed(() => {
           <a href="useCoupon">쿠폰사용</a>
         </div>
         <div class="DelButton animate__animated animate__headShake">
-          <a href="orderDelete">전체취소</a>
+          <div @click="removeAllItems">전체취소</div>
         </div>
         <div class="OrderButton animate__animated animate__headShake">
-          <a href="orderLink">주문하기</a>
+          <router-link to="Mainpayment">주문하기</router-link>
         </div>
       </div>
     </div>

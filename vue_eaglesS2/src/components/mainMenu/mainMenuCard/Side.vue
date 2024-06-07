@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed, defineEmits } from "vue";
+import { onMounted, defineEmits } from "vue";
 import { useMenuStore } from "@/stores/menuStore";
 
 const store = useMenuStore();
@@ -8,8 +8,6 @@ const emit = defineEmits(["item-selected"]);
 onMounted(() => {
   store.fetchMenuItems("sideMenu");
 });
-
-const chunkedMenuItems = computed(() => store.chunkedMenuItems);
 
 function selectItem(item) {
   emit("item-selected", item);
