@@ -7,7 +7,6 @@ import VideoPlayer from "./VideoPlayer.vue";
   <body>
     <Navigation />
     <VideoPlayer />
-    <RouterView />
   </body>
 </template>
 
