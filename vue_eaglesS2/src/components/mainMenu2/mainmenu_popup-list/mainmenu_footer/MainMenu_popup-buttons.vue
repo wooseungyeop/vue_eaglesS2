@@ -1,31 +1,25 @@
 <script setup>
-import { useRouter } from "vue-router";
+import { usePopupStore } from "@/stores/menuStore";
 
-const router = useRouter();
+const popUpStore = usePopupStore();
 
-const goToMainMenu = () => {
-  router.push({ path: "/mainmenu" });
-  console.log("Navigating to MainMenu");
-};
+function ButtonClick1() {
+  popUpStore.togglePopUp1();
+}
 
-const popUpfinal = () => {
-  const element = document.getElementsByClassName("popup-overlay")[0];
-  if (element) {
-    element.style.display = "block";
-  } else {
-    console.error("Popup overlay element not found.");
-  }
-};
+function ButtonClick2() {
+  popUpStore.togglePopUp2();
+}
 </script>
 
 <template>
   <div class="popup-buttons">
-    <div class="previous-button" @click="goToMainMenu">
+    <div class="previous-button" @click="ButtonClick1">
       <p>
         <a>이전</a>
       </p>
     </div>
-    <div class="next-button" @click="popUpfinal">
+    <div class="next-button" @click="ButtonClick2">
       <p>
         <a>결제하기</a>
       </p>
