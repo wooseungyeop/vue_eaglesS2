@@ -6,7 +6,7 @@ import Side from "../components/mainMenu/mainMenuCard/Side.vue";
 import Beverage from "../components/mainMenu/mainMenuCard/Beverage.vue";
 import PopUp from "../components/mainMenu2/PopUp.vue";
 import MainMenu from "../components/mainMenu/MainMenu.vue";
-
+import Mainpage from "../views/Mainpage.vue";
 // const router = createRouter({
 //   history: createWebHistory(),
 //   routes: [
@@ -22,7 +22,8 @@ import MainMenu from "../components/mainMenu/MainMenu.vue";
 // });
 
 const routes = [
-  { path: "/", redirect: "/suggest" },
+  // { path: "/", redirect: "/suggest" },
+  { path:"/mainpage",  component : Mainpage}, // seohyun
   { path: "/suggest", name: "suggest", component: Suggest },
   { path: "/setMenu", name: "setMenu", component: SetMenu },
   { path: "/burger", name: "burger", component: Burger },

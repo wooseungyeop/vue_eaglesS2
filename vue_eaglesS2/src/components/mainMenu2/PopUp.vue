@@ -5,9 +5,9 @@ import PopUpSumList from "./mainmenu_popup-list/mainmenu_body/MainMenu_PopUp-Sum
 import ImgsBox from "./mainmenu_popup-list/mainmenu_body/MainMenu_Imgs-Box.vue";
 import PopUpButtons from "./mainmenu_popup-list/mainmenu_footer/MainMenu_popup-buttons.vue";
 
-import FinalAmountSub from "./mainmenu_popup-overlay/popup-overlay_header/Final-Amount-sub.vue";
-import PayMentOptions from "./mainmenu_popup-overlay/popup-overlay_body/PayMent-Options.vue";
-import PopUpButton02 from "./mainmenu_popup-overlay/popup-overlay_footer/PopUp-Button02.vue";
+// import FinalAmountSub from "./mainmenu_popup-overlay/popup-overlay_header/Final-Amount-sub.vue";
+// import PayMentOptions from "./mainmenu_popup-overlay/popup-overlay_body/PayMent-Options.vue";
+// import PopUpButton02 from "./mainmenu_popup-overlay/popup-overlay_footer/PopUp-Button02.vue";
 
 const popUp = () => {
   const element = document.getElementsByClassName("popup-list")[0];
