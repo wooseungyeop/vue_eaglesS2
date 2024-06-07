@@ -1,8 +1,10 @@
 <script setup>
-import { provide, reactive, ref } from "vue";
+import { provide, reactive, ref, computed } from "vue";
+import { usePopupStore } from "@/stores/menuStore";
 import Header from "../mainMenu/Header.vue";
 import Section from "../mainMenu/Section.vue";
 import Footer from "../mainMenu/Footer.vue";
+import PopUp from "../mainMenu2/PopUp.vue";
 
 // 상태 관리
 const state = reactive({
@@ -12,9 +14,13 @@ const state = reactive({
 provide("state", state);
 
 const selectedItem = ref({});
+const popUpStore = usePopupStore();
+
 function handleItemSelected(item) {
   selectedItem.value = item;
 }
+
+const popUpVisible = computed(() => popUpStore.showPopUp);
 
 console.log(state.selectedOption);
 </script>
@@ -24,6 +30,9 @@ console.log(state.selectedOption);
     <Header />
     <Section @item-selected="handleItemSelected" />
     <Footer :selectedItem="selectedItem" />
+    <div v-show="popUpVisible">
+      <PopUp/>
+    </div>
   </div>
 </template>
 

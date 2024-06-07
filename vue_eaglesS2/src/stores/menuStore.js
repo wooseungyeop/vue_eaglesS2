@@ -60,3 +60,18 @@ export const useStore = () => {
     setSelectedItem
   };
 };
+
+export const usePopupStore = defineStore('popup', {
+  state: () => ({
+    showPopUp: false,
+    showPopUp2 : false
+  }),
+  actions: {
+    togglePopUp1() {
+      this.showPopUp = !this.showPopUp;
+    },
+    togglePopUp2() {
+      this.showPopUp2 = !this.showPopUp2;
+    }
+  }
+});

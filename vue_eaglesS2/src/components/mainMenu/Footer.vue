@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, defineProps, computed } from "vue";
+import { usePopupStore } from '@/stores/menuStore';
 import "animate.css";
 
 const props = defineProps({
@@ -7,6 +8,12 @@ const props = defineProps({
 });
 
 const selectedItems = ref([]);
+const popUpStore = usePopupStore();
+
+
+function ButtonClick() {
+  popUpStore.togglePopUp1();
+}
 
 watch(
   () => props.selectedItem,
@@ -160,7 +167,7 @@ const removeAllItems = () => {
           <div @click="removeAllItems">전체취소</div>
         </div>
         <div class="OrderButton animate__animated animate__headShake">
-          <router-link to="Mainpayment">주문하기</router-link>
+          <div @click="ButtonClick">주문하기</div>
         </div>
       </div>
     </div>
