@@ -11,10 +11,6 @@ const state = reactive({
 
 provide("state", state);
 
-const selectOption = (option) => {
-  state.selectedOption = option;
-};
-
 const selectedItem = ref({});
 function handleItemSelected(item) {
   selectedItem.value = item;
@@ -36,7 +32,7 @@ console.log(state.selectedOption);
   width: 800px;
   height: 100vh;
   margin: auto;
-
   border: 1px solid #000;
+  overflow: hidden;
 }
 </style>

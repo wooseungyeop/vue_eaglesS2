@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, inject, watch } from "vue";
+import { ref, inject, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
@@ -12,7 +12,6 @@ if (!state) {
 
 const orderOption = ref("eat");
 
-// 메뉴 선택을 처리하는 함수
 const selectMenu = (menu) => {
   orderOption.value = menu;
   console.log(orderOption.value);
@@ -20,7 +19,6 @@ const selectMenu = (menu) => {
 
 const updateSelectedOption = (newPath) => {
   const options = {
-    "/": "suggest",
     "/suggest": "suggest",
     "/setMenu": "setMenu",
     "/burger": "burger",
@@ -59,6 +57,7 @@ watch(
 const navigateTo = (path) => {
   router.push(path);
 };
+
 </script>
 
 <template>
@@ -91,12 +90,8 @@ const navigateTo = (path) => {
       <router-link to="/suggest">추천메뉴</router-link>
       <router-link to="/setMenu">세트메뉴</router-link>
       <router-link to="/burger">단품</router-link>
-      <router-link to="/side" class="navButton" active-cl ass="activeLink"
-        >사이드</router-link
-      >
-      <router-link to="/beverage" class="navButton" active-class="activeLink"
-        >음료</router-link
-      >
+      <router-link to="/side">사이드</router-link>
+      <router-link to="/beverage">음료</router-link>
     </div>
   </div>
 </template>
