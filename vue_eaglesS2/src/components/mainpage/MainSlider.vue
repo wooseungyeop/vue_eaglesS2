@@ -3,6 +3,7 @@
         <div class="slide"></div>
         <div class="slide"></div>
         <div class="slide"></div>
+        <!-- <div class="slide"></div> -->
     </div>
 </template>
 

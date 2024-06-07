@@ -62,25 +62,30 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
-  animation: slider 9s infinite linear;
+  /* 4개의 이미지는 총 10초동안 슬라이딩 되고 infinite로 무한반복됨 */
+  animation: slider 7.5s infinite linear;
 
 }
 
 .slide:nth-child(1) {
-  background-image: url(/img/event1.png);
+  background-image: url(/img/event01.jpg);
   animation-delay: 0;
 }
 
 .slide:nth-child(2) {
-  background-image: url(/img/event2.png);
-  animation-delay: -3s;
+  background-image: url(/img/event03.jpg);
+  animation-delay: -2.5s;
 }
 
 .slide:nth-child(3) {
-  background-image: url(/img/event3.png);
-  animation-delay: -6s;
+  background-image: url(/img/event04.jpg);
+  animation-delay: -5s;
 }
+
+/* .slide:nth-child(4) {
+  background-image: url(/img/event04.jpg);
+  animation-delay: -7.5s;
+} */
 
 @keyframes slider {
   0% {
