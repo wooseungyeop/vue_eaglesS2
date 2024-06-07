@@ -1,4 +1,5 @@
 .flicker a {
+    cursor: pointer;
     font-size: 150px;
     color: #fff;
     text-shadow:

@@ -2,7 +2,10 @@
 import { ref } from "vue";
 
 const skip = () => {
-  document.getElementById("btnfadeIn").classList.add("fade-out");
+  const videoContainer = document.getElementById("btnfadeIn");
+  videoContainer.classList.add("fade-out");
+  const iframe = videoContainer.querySelector("iframe");
+  iframe.style.display = "none";
 };
 </script>
 <template>
