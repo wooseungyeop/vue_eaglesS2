@@ -46,7 +46,7 @@ const kfc = () => {
       <div class="goodPayment_box_kfccard" @click="kfc">
         <div class="goodPayment_box_kfccard_card">
           <div class="goodPayment_box_kfccard_card_in">
-            <img class="goodPayment_box_kfccard_card_img" src=" /kfc.png" />
+            <img class="goodPayment_box_kfccard_card_img" src="../../../public/img/kfc.png" />
           </div>
           <div>
             <p class="goodPayment_box_card1_Creditcard_p">KFC선불카드</p>
