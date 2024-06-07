@@ -1,6 +1,7 @@
 <script setup>
 import { ref, inject, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import swal from "sweetalert";
 
 const router = useRouter();
 const route = useRoute();
@@ -48,9 +49,7 @@ watch(
 watch(
   () => state.selectedOption,
   (newValue, oldValue) => {
-    console.log(
-      `선택된 옵션이 ${oldValue}에서 ${newValue}(으)로 변경되었습니다.`
-    );
+    console.log(`선택된 옵션이 ${oldValue}에서 ${newValue}(으)로 변경되었습니다.`);
   }
 );
 
@@ -58,6 +57,9 @@ const navigateTo = (path) => {
   router.push(path);
 };
 
+const showAlert = () => {
+  swal("Error!", "미구현 페이지입니다", "error");
+};
 </script>
 
 <template>
@@ -81,9 +83,9 @@ const navigateTo = (path) => {
       </div>
       <div class="Hd_Top_Back">
         <div @click="() => navigateTo('/')">첫 화면</div>
-        <div @click="() => navigateTo('/guide')">사용안내</div>
-        <div @click="() => navigateTo('/foodInfo')">영양정보</div>
-        <div @click="() => navigateTo('/lang')">Language</div>
+        <div @click="showAlert">사용안내</div>
+        <div @click="showAlert">영양정보</div>
+        <div @click="showAlert">Language</div>
       </div>
     </div>
     <div class="Hd_Nav">
