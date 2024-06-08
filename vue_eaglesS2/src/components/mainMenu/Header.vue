@@ -38,6 +38,10 @@ watch(
 );
 
 const navigateTo = (path) => {
+  if (path === "/mainpage") {
+    // 첫 화면으로 이동할 때 필요한 상태 초기화
+    store.clearSelectedItems(); // 선택된 옵션 초기화 함수
+  }
   router.push(path);
 };
 </script>
@@ -62,7 +66,7 @@ const navigateTo = (path) => {
         </div>
       </div>
       <div class="Hd_Top_Back">
-        <router-link :to="{ path: '/mainpage' }">첫 화면</router-link>
+        <router-link :to="{ path: '/mainpage' }">첫화면</router-link>
         <div @click="() => navigateTo('/guide')">사용안내</div>
         <div @click="() => navigateTo('/foodInfo')">영양정보</div>
         <div @click="() => navigateTo('/lang')">Language</div>

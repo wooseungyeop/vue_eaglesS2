@@ -57,7 +57,7 @@ function ButtonClick() {
     <div class="Footer-Container">
       <div class="Footer_Top">
         <div class="Footer_Top_left">
-          <div>주 문 목 록</div>
+          <div>주문목록</div>
           <div class="orderCount">
             <div class="orderCount-con">
               <img src="/shoppingBag.svg" class="shoppingBag" />
@@ -66,7 +66,7 @@ function ButtonClick() {
           </div>
         </div>
         <div class="Footer_Top_Right">
-          <div>주 문 금 액</div>
+          <div>주문금액</div>
           <div>{{ totalPrice }}</div>
         </div>
       </div>
@@ -74,7 +74,7 @@ function ButtonClick() {
         <table>
           <thead>
             <tr>
-              <th class="col-menu">메뉴</th>
+              <th class="col-menu">메뉴이름</th>
               <th class="col-quantity">수량</th>
               <th class="col-price">가격</th>
             </tr>
