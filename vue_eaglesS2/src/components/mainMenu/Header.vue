@@ -1,11 +1,12 @@
 <script setup>
-import { watch, onMounted, nextTick } from "vue";
-import { useRoute } from "vue-router";
-import { navRootStore } from "@/stores/menuStore";
-import { useOrderStore } from "@/stores/menuStore";
-import swal from "sweetalert";
+import { watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useMenuStore, navRootStore, useOrderStore } from "@/stores/menuStore";
+import swal from "sweetalert2";
 
 const route = useRoute();
+const router = useRouter();
+const itemstore = useMenuStore();
 const store = navRootStore();
 const orderStore = useOrderStore();
 
@@ -27,29 +28,26 @@ const updateSelectedOption = (newPath) => {
 };
 
 const showAlert = () => {
-  swal("Error!", "미구현 페이지입니다", "error");
+  swal.fire({
+    title: "Error!",
+    text: "미구현페이지입니다!",
+    icon: "error",
+    confirmButtonColor: "#ea0029",
+    confirmButtonText: "확인",
+  });
 };
 
 const foodInfo = () => {
-  swal({
-    content: {
-      element: "img",
-      attributes: {
-        src: "https://www.kfckorea.com/nas/kfcimg/info/info_nutrition.png",
-        alt: "Custom image",
-        style: "width:800; height:100dvh;",
-      },
+  swal.fire({
+    title: "영양 정보",
+    html: `
+      <img src="https://www.kfckorea.com/nas/kfcimg/info/info_nutrition.png" alt="영양 정보 이미지" style="width:100%; height:99%;">
+    `,
+    confirmButtonText: "확인",
+    confirmButtonColor: "#ea0029",
+    customClass: {
+      popup: "swal-modal-foodinfo", // 이 클래스에 CSS 스타일을 적용
     },
-    buttons: {
-      confirm: {
-        text: "X",
-        value: true,
-        visible: true,
-        className: "",
-        closeModal: true,
-      },
-    },
-    className: "swal-modal-foodinfo",
   });
 };
 
@@ -63,6 +61,37 @@ watch(
   },
   { immediate: true } // 경로가 설정될 때 즉시 실행되도록 설정
 );
+
+const confirmAction = () => {
+  swal
+    .fire({
+      title: "시작화면으로",
+      text: "주문을 취소하고 이동하시겠습니까?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ea0029",
+      cancelButtonColor: "#0f1822",
+      confirmButtonText: "승인",
+      cancelButtonText: "취소",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        swal
+          .fire({
+            title: "시작화면으로",
+            text: "주문을 취소하고 이동합니다",
+            icon: "success",
+            confirmButtonColor: "#ea0029",
+            confirmButtonText: "승인",
+          })
+          .then(() => {
+            itemstore.clearSelectedItems();
+            router.push("/mainpage");
+          });
+      }
+    });
+};
 </script>
 
 <template>
@@ -85,7 +114,7 @@ watch(
         </div>
       </div>
       <div class="Hd_Top_Back">
-        <router-link :to="{ path: '/mainpage' }">첫화면</router-link>
+        <div @click="confirmAction">첫화면</div>
         <div @click="showAlert">사용안내</div>
         <div @click="foodInfo">영양정보</div>
         <div @click="showAlert">Language</div>

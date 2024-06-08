@@ -133,6 +133,10 @@ function ButtonClick() {
                     class="quantityMinus"
                     @click="decrementQuantity(item)"
                     :disabled="item.quantity <= 1"
+                    :class="{
+                      greyButton: item.quantity === 1,
+                      defaultButton: item.quantity > 1,
+                    }"
                   >
                     -
                   </button>

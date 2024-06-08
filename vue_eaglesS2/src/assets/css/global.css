@@ -1,9 +1,9 @@
 .swal-modal-foodinfo {
-  width: 800px; /* 너비 조정 */
-  height: 90dvh; /* 높이 조정 */
+  max-height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .swal-modal-foodinfo::-webkit-scrollbar {
   width: 8px;
 }
