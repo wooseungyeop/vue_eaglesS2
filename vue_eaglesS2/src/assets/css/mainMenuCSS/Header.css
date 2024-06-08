@@ -15,7 +15,7 @@
   padding: 10px;
 }
 
-.Hd_Top_Front>div {
+.Hd_Top_Front > div {
   padding: 5px;
   margin-right: 10px;
 }
@@ -49,7 +49,14 @@
   height: 20px;
 }
 
-.Hd_Top_Back>div {
+.Hd_Top_Back > div {
+  border-right: 1px solid #999;
+  margin-right: 10px;
+  color: #999;
+  cursor: pointer;
+  padding-right: 10px;
+}
+.Hd_Top_Back > a {
   border-right: 1px solid #999;
   margin-right: 10px;
   color: #999;

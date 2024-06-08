@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { navRootStore } from "@/stores/menuStore";
 
 import Index from "../components/mainIndex/MainComponent.vue";
 import IndexVideo from "../components/mainIndex/VideoPlayer.vue";
@@ -10,42 +11,64 @@ import SetMenu from "../components/mainMenu/mainMenuCard/SetMenu.vue";
 import Burger from "../components/mainMenu/mainMenuCard/Burger.vue";
 import Side from "../components/mainMenu/mainMenuCard/Side.vue";
 import Beverage from "../components/mainMenu/mainMenuCard/Beverage.vue";
-import Section from "@/components/mainMenu/Section.vue"
+import Section from "@/components/mainMenu/Section.vue";
 import Mainpayment from "@/components/paymentVIew/Mainpayment.vue";
 
 const routes = [
-  {path: "/", redirect: { name: "index" } },
-  {path: "/Index", 
-   name: "index", 
-   component: Index, 
-   children: [
-    {path: "/IndexVideo", name: "Video", component: IndexVideo},
-    {path: "/IndexEnter", name: "Enter", component: IndexEnter}
-   ]
+  { path: "/", redirect: { name: "index" } },
+  {
+    path: "/Index",
+    name: "index",
+    component: Index,
+    children: [
+      { path: "/IndexVideo", name: "Video", component: IndexVideo },
+      { path: "/IndexEnter", name: "Enter", component: IndexEnter },
+    ],
   },
-  {path:"/mainpage", name: "FirstPage", component : Mainpage},
-  {path: "/MainMenu", 
-   name: "MainMenu", 
-   component: MainMenu, 
-   children:[
-    {path:"Section", 
-     component: Section, 
-     children: [
-      { path: "/suggest", name: "suggest", component: Suggest },
-      { path: "/setMenu", name: "setMenu", component: SetMenu },
-      { path: "/burger", name: "burger", component: Burger },
-      { path: "/side", name: "side", component: Side },
-      { path: "/beverage", name: "beverage", component: Beverage }
-     ]
-    }
-  ]
-},
-  { path: "/Mainpayment", name: "mainpayment", component:Mainpayment}
+  { path: "/mainpage", name: "FirstPage", component: Mainpage },
+  {
+    path: "/MainMenu",
+    name: "MainMenu",
+    component: MainMenu,
+    redirect: { name: "suggest" },
+    children: [
+      {
+        path: "/Section",
+        component: Section,
+        children: [
+          { path: "/suggest", name: "suggest", component: Suggest },
+          { path: "/setMenu", name: "setMenu", component: SetMenu },
+          { path: "/burger", name: "burger", component: Burger },
+          { path: "/side", name: "side", component: Side },
+          { path: "/beverage", name: "beverage", component: Beverage },
+        ],
+      },
+    ],
+  },
+  { path: "/Mainpayment", name: "mainpayment", component: Mainpayment },
 ];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, _from, next) => {
+  const store = navRootStore();
+  const options = {
+    "/suggest": "suggest",
+    "/setMenu": "setMenu",
+    "/burger": "burger",
+    "/side": "side",
+    "/beverage": "beverage",
+  };
+
+  const selectedOption = options[to.path];
+  if (selectedOption) {
+    store.setSelectedOption(selectedOption);
+  }
+
+  next();
 });
 
 export default router;

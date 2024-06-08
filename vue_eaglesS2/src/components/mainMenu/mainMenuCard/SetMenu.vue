@@ -1,16 +1,17 @@
 <script setup>
-import { onMounted, defineEmits } from "vue";
+import { onMounted } from "vue";
 import { useMenuStore } from "@/stores/menuStore";
+import "animate.css";
 
-const store = useMenuStore();
-const emit = defineEmits(["item-selected"]);
+const store = useMenuStore(); // 스토어 인스턴스 사용
 
+// 컴포넌트가 마운트될 때 실행
 onMounted(() => {
-  store.fetchMenuItems("setMenu");
+  store.fetchMenuItems("setMenu"); // 추천 메뉴 아이템 로드
 });
 
 function selectItem(item) {
-  emit("item-selected", item);
+  store.addSelectedItem(item); // 선택된 아이템을 스토어에 추가
 }
 </script>
 

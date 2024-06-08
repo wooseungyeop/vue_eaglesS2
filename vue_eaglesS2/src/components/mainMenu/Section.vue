@@ -1,40 +1,36 @@
 <script setup>
-import { inject, defineEmits } from "vue";
+import { navRootStore } from "@/stores/menuStore";
+import { computed } from "vue";
 import Suggest from "@/components/mainMenu/mainMenuCard/Suggest.vue";
 import SetMenu from "@/components/mainMenu/mainMenuCard/SetMenu.vue";
 import Burger from "@/components/mainMenu/mainMenuCard/Burger.vue";
 import Side from "@/components/mainMenu/mainMenuCard/Side.vue";
 import Beverage from "@/components/mainMenu/mainMenuCard/Beverage.vue";
 
-const state = inject("state");
-const emit = defineEmits(["item-selected"]);
+const store = navRootStore();
 
-function handleItemSelected(item) {
-  emit("item-selected", item);
-}
+// 반응성을 유지하기 위해 computed를 사용
+const selectedOption = computed(() => store.selectedOption);
 
-if (!state) {
-  console.error("state is not provided");
-}
-console.log(state.selectedOption);
+console.log(selectedOption.value);
 </script>
 
 <template>
   <article>
-    <section v-if="state.selectedOption === 'suggest'" class="Sc_Section">
-      <Suggest @item-selected="handleItemSelected" />
+    <section v-if="selectedOption === 'suggest'" class="Sc_Section">
+      <Suggest />
     </section>
-    <section v-if="state.selectedOption === 'setMenu'" class="Sc_Section">
-      <SetMenu @item-selected="handleItemSelected" />
+    <section v-if="selectedOption === 'setMenu'" class="Sc_Section">
+      <SetMenu />
     </section>
-    <section v-if="state.selectedOption === 'burger'" class="Sc_Section">
-      <Burger @item-selected="handleItemSelected" />
+    <section v-if="selectedOption === 'burger'" class="Sc_Section">
+      <Burger />
     </section>
-    <section v-if="state.selectedOption === 'side'" class="Sc_Section">
-      <Side @item-selected="handleItemSelected" />
+    <section v-if="selectedOption === 'side'" class="Sc_Section">
+      <Side />
     </section>
-    <section v-if="state.selectedOption === 'beverage'" class="Sc_Section">
-      <Beverage @item-selected="handleItemSelected" />
+    <section v-if="selectedOption === 'beverage'" class="Sc_Section">
+      <Beverage />
     </section>
   </article>
 </template>
