@@ -1,10 +1,10 @@
 <script setup>
-import { watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { watch, onMounted, nextTick } from "vue";
+import { useRoute } from "vue-router";
 import { navRootStore } from "@/stores/menuStore";
 import { useOrderStore } from "@/stores/menuStore";
+import swal from "sweetalert";
 
-const router = useRouter();
 const route = useRoute();
 const store = navRootStore();
 const orderStore = useOrderStore();
@@ -26,6 +26,33 @@ const updateSelectedOption = (newPath) => {
   }
 };
 
+const showAlert = () => {
+  swal("Error!", "미구현 페이지입니다", "error");
+};
+
+const foodInfo = () => {
+  swal({
+    content: {
+      element: "img",
+      attributes: {
+        src: "https://www.kfckorea.com/nas/kfcimg/info/info_nutrition.png",
+        alt: "Custom image",
+        style: "width:800; height:100dvh;",
+      },
+    },
+    buttons: {
+      confirm: {
+        text: "X",
+        value: true,
+        visible: true,
+        className: "",
+        closeModal: true,
+      },
+    },
+    className: "swal-modal-foodinfo",
+  });
+};
+
 // `watch`는 Vue의 반응성 시스템을 사용하여 `route.path`의 변경을 감시합니다.
 // `route.path`가 변경될 때마다 `updateSelectedOption` 함수를 호출하여
 // 스토어의 `selectedOption`을 적절히 업데이트합니다.
@@ -36,14 +63,6 @@ watch(
   },
   { immediate: true } // 경로가 설정될 때 즉시 실행되도록 설정
 );
-
-const navigateTo = (path) => {
-  if (path === "/mainpage") {
-    // 첫 화면으로 이동할 때 필요한 상태 초기화
-    store.clearSelectedItems(); // 선택된 옵션 초기화 함수
-  }
-  router.push(path);
-};
 </script>
 
 <template>
@@ -67,9 +86,9 @@ const navigateTo = (path) => {
       </div>
       <div class="Hd_Top_Back">
         <router-link :to="{ path: '/mainpage' }">첫화면</router-link>
-        <div @click="() => navigateTo('/guide')">사용안내</div>
-        <div @click="() => navigateTo('/foodInfo')">영양정보</div>
-        <div @click="() => navigateTo('/lang')">Language</div>
+        <div @click="showAlert">사용안내</div>
+        <div @click="foodInfo">영양정보</div>
+        <div @click="showAlert">Language</div>
       </div>
     </div>
     <div class="Hd_Nav">
