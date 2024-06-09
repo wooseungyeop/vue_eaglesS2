@@ -1,26 +1,29 @@
 <script setup>
-import { ref, watch, computed } from "vue";
-import { usePopupStore, useMenuStore } from "@/stores/menuStore";
-import "animate.css";
-import swal from "sweetalert";
+import { ref, watch, computed } from "vue"; // Vue 3 Composition API의 ref, watch, computed 함수를 가져옵니다.
+import { usePopupStore, useMenuStore } from "@/stores/menuStore"; // 상태 관리 스토어에서 사용할 함수를 가져옵니다.
+import "animate.css"; // 애니메이션 CSS 라이브러리를 가져옵니다.
+import swal from "sweetalert"; // 알림창을 위한 sweetalert 라이브러리를 가져옵니다.
 
-const popUpStore = usePopupStore();
-const store = useMenuStore();
-const animateLength = ref(false);
+const popUpStore = usePopupStore(); // 팝업 관련 상태를 관리하는 스토어를 사용합니다.
+const store = useMenuStore(); // 메뉴 관련 상태를 관리하는 스토어를 사용합니다.
+const animateLength = ref(false); // 애니메이션 상태를 관리하는 반응형 참조입니다.
 
 // 애니메이션 클래스를 계산하여 반환
 const animationClasses = computed(() => ({
-  animate__animated: true,
-  animate__rubberBand: animateLength.value,
+  animate__animated: true, // 항상 애니메이션을 적용
+  animate__rubberBand: animateLength.value, // animateLength 값에 따라 rubberBand 애니메이션 적용
 }));
 
 watch(
-  () => store.selectedItems.length,
+  () => store.selectedItems.length, // 선택된 아이템의 수를 감시
   (newLength, oldLength) => {
+    // 새 길이와 이전 길이를 인자로 받음
     if (newLength !== oldLength) {
-      animateLength.value = true;
+      // 길이가 변경되었을 때
+      animateLength.value = true; // 애니메이션 상태를 활성화
       setTimeout(() => {
-        animateLength.value = false;
+        // 1초 후에
+        animateLength.value = false; // 애니메이션 상태를 비활성화
       }, 1000);
     }
   }
@@ -48,38 +51,38 @@ const totalPrice = computed(() => {
     new Intl.NumberFormat("ko-KR", {
       style: "decimal", // "currency" 대신 "decimal" 사용
       maximumFractionDigits: 0, // 소수점 없이 정수만 표시
-    }).format(total) + " 원"
-  ); // 숫자 뒤에 "원"을 붙임
+    }).format(total) + " 원" // 숫자 뒤에 "원"을 붙임
+  );
 });
 
 const showAlert = () => {
-  swal("Error!", "미구현 기능입니다", "error");
+  swal("Error!", "미구현 기능입니다", "error"); // 미구현 기능에 대한 알림창
 };
 
 const noCountAlert = () => {
-  swal("주문오류!", "주문목록이 없습니다", "error");
+  swal("주문오류!", "주문목록이 없습니다", "error"); // 주문 목록이 없을 때의 알림창
 };
 
 // 아이템 수량 조절 함수
 function incrementQuantity(item) {
-  store.incrementItemQuantity(item.id);
+  store.incrementItemQuantity(item.id); // 아이템 수량 증가
 }
 
 function decrementQuantity(item) {
-  store.decrementItemQuantity(item.id);
+  store.decrementItemQuantity(item.id); // 아이템 수량 감소
 }
 
 function removeItem(item) {
-  store.removeSelectedItem(item);
+  store.removeSelectedItem(item); // 아이템 제거
 }
 
 function removeAllItems() {
-  store.clearSelectedItems();
+  store.clearSelectedItems(); // 모든 아이템 제거
 }
 
 function ButtonClick() {
   if (store.selectedItems.length === 0) {
-    noCountAlert();
+    noCountAlert(); // 주문 목록이 없으면 알림창 표시
   } else {
     popUpStore.togglePopUp1(); // 주문 처리 로직
   }

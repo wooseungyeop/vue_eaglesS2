@@ -1,13 +1,15 @@
 // stores/counterStore.js
-import { defineStore } from 'pinia'
+// test 페이지
 
-export const useCounterStore = defineStore('counter', {
+import { defineStore } from "pinia";
+
+export const useCounterStore = defineStore("counter", {
   state: () => {
-    return { count: 0 }
+    return { count: 0 };
   },
   actions: {
     increment() {
-      this.count++
-    }
-  }
-})
+      this.count++;
+    },
+  },
+});
