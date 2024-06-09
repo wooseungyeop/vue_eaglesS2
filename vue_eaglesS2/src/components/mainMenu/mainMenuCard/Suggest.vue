@@ -3,15 +3,17 @@ import { onMounted } from "vue";
 import { useMenuStore } from "@/stores/menuStore";
 import "animate.css";
 
-const store = useMenuStore(); // 스토어 인스턴스 사용
+// 스토어 인스턴스 사용
+const store = useMenuStore();
 
 // 컴포넌트가 마운트될 때 실행
 onMounted(() => {
   store.fetchMenuItems("recommended"); // 추천 메뉴 아이템 로드
 });
 
+// 선택된 아이템을 스토어에 추가
 function selectItem(item) {
-  store.addSelectedItem(item); // 선택된 아이템을 스토어에 추가
+  store.addSelectedItem(item);
 }
 </script>
 

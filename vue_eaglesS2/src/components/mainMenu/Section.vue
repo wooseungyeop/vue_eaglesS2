@@ -11,8 +11,6 @@ const store = navRootStore();
 
 // 반응성을 유지하기 위해 computed를 사용
 const selectedOption = computed(() => store.selectedOption);
-
-console.log(selectedOption.value);
 </script>
 
 <template>
