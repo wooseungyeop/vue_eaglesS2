@@ -31,11 +31,3 @@ export function noCountAlert() {
     confirmButtonText: "확인",
   });
 }
-
-export function handleButtonClick(popUpStore, selectedItems) {
-  if (selectedItems.length === 0) {
-    noCountAlert();
-  } else {
-    popUpStore.togglePopUp1();
-  }
-}

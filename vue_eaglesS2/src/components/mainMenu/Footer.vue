@@ -1,10 +1,7 @@
 <script setup>
 import { computed } from "vue";
-import { useMenuStore } from "@/stores/menuStore";
-import {
-  NotImplemented,
-  handleButtonClick,
-} from "@/assets/js/mainMenu_js/modal";
+import { useMenuStore, usePopupStore } from "@/stores/menuStore";
+import { NotImplemented, noCountAlert } from "@/assets/js/mainMenu_js/modal";
 import {
   animationClasses,
   setupAnimationWatch,
@@ -14,9 +11,16 @@ const store = useMenuStore();
 setupAnimationWatch(store);
 
 const showNotImplemented = () => NotImplemented();
+const showNoCountAlert = () => noCountAlert();
+const popUpStore = usePopupStore();
 
-const onButtonClick = () => handleButtonClick(store.selectedItems);
-
+function ButtonClick() {
+  if (store.selectedItems.length === 0) {
+    showNoCountAlert();
+  } else {
+    popUpStore.togglePopUp1(); // 주문 처리 로직
+  }
+}
 const formattedPrices = computed(() =>
   store.selectedItems.map((item) => ({
     ...item,
@@ -111,7 +115,7 @@ const removeAllItems = () => store.clearSelectedItems();
         <div class="PlusButton" @click="showNotImplemented">+</div>
         <div class="CouponButton" @click="showNotImplemented">쿠폰사용</div>
         <div class="DelButton" @click="removeAllItems">전체취소</div>
-        <div class="OrderButton" @click="onButtonClick">주문하기</div>
+        <div class="OrderButton" @click="ButtonClick">주문하기</div>
       </div>
     </div>
   </div>
