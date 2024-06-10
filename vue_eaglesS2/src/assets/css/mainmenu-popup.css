@@ -7,62 +7,78 @@
     top: 0;
     left: 0;
     display: block;
-}
-
-.popup-container {
+  }
+  .imgRedLine {
+    /* width: 130px;
+    height: 60px; */
+    width: 130px;
+    height: 60px;
+    margin-left: 5%;
+  }
+  
+  .popup-container {
     width: 40%;
+    height: 98%;
+    border-radius: 20px;
     background-color: white;
-    padding: 20px;
+    padding: 0 15px;
     margin: 0 auto;
-}
-
-.popup-header p {
+  }
+  
+  .popup-header p {
     width: 100%;
     font-size: 2em;
     font-weight: bolder;
-}
-
-.popup-content {
+    padding: 2% 0 2%;
+  }
+  
+  .popup-content {
     width: 100%;
     margin-top: 20px;
-}
-
-.order-table {
+  }
+  
+  .order-table {
     height: 370px;
-    background-color: #D3D3D3;
-}
-
-.list {
+    background-color: #E2E2E2;
+    border-radius: 20px 20px 10px 10px;
+    overflow: hidden;
+  }
+  
+  .list {
     width: 100%;
-}
-
-.meue-list {
+  }
+  
+  .meue-list {
     height: 40px;
     background-color: black;
     color: white;
     font-size: 25px;
-}
-
-.imgs-box {
-    margin-top: 30px;
+  }
+  
+  .imgs-box {
+    margin-top: 20px;
     overflow: hidden;
     padding-left: 20px;
-}
-
-.additional-items {
+  }
+  
+  .additional-items {
     display: flex;
     align-items: center;
     width: 100%;
-}
-
-.additional-items_sub {
-    border: 1px solid red;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-}
-
-.item-thumbails {
+    position: relative;
+  }
+  
+  .additional-items_sub {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    content: "";
+    border-top: 5px solid red;
+    border-right: 5px solid red;
+    transform: rotate(225deg);
+  }
+  
+  .item-thumbails {
     border: 1px #999;
     margin-top: 20px;
     width: 88%;
@@ -70,30 +86,37 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-
-.thumbnail {
+  }
+  
+  .thumbnail {
     width: 150px;
-    height: 150px;
+    height: 100px;
     border: 1px solid black;
-}
-
-.arrow-button {
-    border: 1px solid red;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-}
-
-.popup-buttons {
+  }
+  .thumbnail_price{
+      text-align: center;
+  
+  }
+  
+  .additional-items_sub2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    content: "";
+    border-top: 5px solid red;
+    border-right: 5px solid red;
+    transform: rotate(405deg);
+  }
+  
+  .popup-buttons {
     display: flex;
     width: 100%;
     align-items: center;
-    margin-top: 40px;
+    margin: 10px;
     justify-content: space-around;
-}
-
-.previous-button {
+  }
+  
+  .previous-button {
     width: 150px;
     border: 1px solid black;
     cursor: pointer;
@@ -103,9 +126,9 @@
     justify-content: center;
     align-items: center;
     font-size: 20px;
-}
-
-.next-button {
+  }
+  
+  .next-button {
     width: 150px;
     border: 1px solid black;
     cursor: pointer;
@@ -115,31 +138,30 @@
     justify-content: center;
     align-items: center;
     font-size: 20px;
-}
-
-.previous-button p {
+  }
+  
+  .previous-button p {
     display: flex;
     align-content: center;
-}
-
-.previous-button:hover {
+  }
+  
+  .previous-button:hover {
     background-color: red;
-}
-
-.previous-button:hover a {
+  }
+  
+  .previous-button:hover a {
     color: white;
-}
-
-
-.next-button:hover {
+  }
+  
+  .next-button:hover {
     background-color: red;
-}
-
-.next-button:hover a {
+  }
+  
+  .next-button:hover a {
     color: white;
-}
-
-.popup-overlay {
+  }
+  
+  .popup-overlay {
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
@@ -148,85 +170,94 @@
     top: 0;
     left: 0;
     display: block;
-}
-
-.popup-inner {
+  }
+  
+  .popup-inner {
     height: 100%;
     display: flex;
     align-items: center;
-}
-
-.final-amount {
+  }
+  
+  .final-amount {
     width: 30%;
     height: 300px;
     background-color: white;
     padding: 20px;
     margin: 0 auto;
-}
-
-.final-amount_sub {
+  }
+  
+  .final-amount_sub {
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin: 10px;
     font-size: 30px;
-}
-
-.final-amount_sub p {
+  }
+  
+  .final-amount_sub p {
     margin-left: -25px;
-}
-
-.final-amount_sub div {
+  }
+  
+  .final-amount_sub div {
     color: red;
     margin-left: 30px;
-}
-
-.payment-options {
+  }
+  
+  .payment-options {
     padding: 10px 0;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     margin: 30px;
-}
-
-.payment-options p {
+  }
+  
+  .payment-options p {
     width: 100%;
     text-align: center;
     font-size: 20px;
-}
-
-.dine-options {
+  }
+  
+  .dine-options {
     display: flex;
     justify-content: center;
     margin: 15px 0 0 0;
     width: 100%;
-}
-
-.dine-in {
+  }
+  
+  .dine-in {
     border: 1px solid black;
     cursor: pointer;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 10px;
     border-radius: 30px;
-}
-
-.take-out {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24);
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .take-out {
     margin: 0 0 0 60px;
     border: 1px solid black;
     cursor: pointer;
     padding: 10px;
     border-radius: 30px;
-}
-
-.popup-buttons02 {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24);
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  .activeOption {
+    background-color: #0f1822;
+    color: #fff;
+  }
+  
+  
+  .popup-buttons02 {
     width: 100%;
     height: 20%;
     display: flex;
     justify-content: space-around;
     margin: 15px 0 0 0;
-}
-
-.previous-button02 {
+  }
+  
+  .previous-button02 {
     width: 150px;
     border: 1px solid black;
     cursor: pointer;
@@ -236,11 +267,10 @@
     justify-content: center;
     align-items: center;
     font-size: 20px;
-}
-
-.next-button02 {
+  }
+  
+  .next-button02 {
     width: 150px;
-    margin: 0 0 0 60px;
     border: 1px solid black;
     cursor: pointer;
     padding: 10px;
@@ -249,18 +279,18 @@
     justify-content: center;
     align-items: center;
     font-size: 20px;
-}
-
-.previous-button02:hover {
+  }
+  
+  .previous-button02:hover {
     background-color: red;
     color: white;
-}
-
-.next-button02:hover {
+  }
+  
+  .next-button02:hover {
     background-color: red;
     color: white;
-
-}
-.next-button02:hover a {
-color: white;
-}
+  }
+  .next-button02:hover a {
+    color: white;
+  }
+  

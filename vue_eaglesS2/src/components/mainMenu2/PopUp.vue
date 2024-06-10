@@ -16,6 +16,12 @@ const popUpStore = usePopupStore();
 
 const popUpVisible = computed(() => popUpStore.showPopUp2);
 
+const popUp = () => {
+  const element = document.getElementsByClassName("popup-list")[0];
+  if (element) {
+    element.style.display = "block";
+  }
+};
 </script>
 
 <template>
