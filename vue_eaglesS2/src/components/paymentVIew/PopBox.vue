@@ -16,31 +16,34 @@
 </template>
 
 <script setup>
-
-import {useMenuStore} from "@/stores/menuStore.js";
-import {useRouter } from "vue-router";
+import { useMenuStore, usePopupStore } from "@/stores/menuStore.js";
+import { useRouter } from "vue-router";
 import swal from "sweetalert2";
 
 const router = useRouter();
 const menuStore = useMenuStore();
+const popupStore = usePopupStore();
 
 const paymentWait = () => {
-  swal.fire({
-    text: "결제가 완료되었습니다!",
-    icon: "success",
-    confirmButtonColor: "#ea0029",
-    confirmButtonText: "확인",
-  }).then(() => {
+  swal
+    .fire({
+      text: "결제가 완료되었습니다!",
+      icon: "success",
+      confirmButtonColor: "#ea0029",
+      confirmButtonText: "확인",
+    })
+    .then(() => {
       menuStore.clearSelectedItems();
+      popupStore.togglePopUp1();
+      popupStore.togglePopUp2();
       router.push("/mainpage");
-   });
-}
+    });
+};
 
 const back = () => {
-  const element = document.getElementsByClassName('popBox')[0];
+  const element = document.getElementsByClassName("popBox")[0];
   if (element) {
-    element.style.display = 'none';
+    element.style.display = "none";
   }
 };
 </script>
-
