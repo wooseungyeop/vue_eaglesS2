@@ -1,3 +1,8 @@
+<script setup>
+import { useMenuStore } from "@/stores/menuStore";
+
+const store = useMenuStore();
+</script>
 <template>
   <div class="imgs-box">
     <p>함께 구매하기 좋은 상품</p>
@@ -13,9 +18,23 @@
             src="../../../../../public/KFC_Menu/burger/bg_04.png"
             style="width: 100%; height: auto"
           />
-          <div class="thumbnail_price">
-            <p>징거더블다운</p>
-            <p>12213213123</p>
+          <div
+            class="thumbnail_price"
+            v-for="(chunk, index) in store.chunkedMenuItems"
+            :key="index"
+            :class="{ 'last-row': index === store.chunkedMenuItems.length - 1 }"
+          >
+            <div
+              class="con_row_card"
+              v-for="(item, idx) in chunk"
+              :key="idx"
+              @click="selectItem(item)"
+            >
+              <p class="cardName">{{ item.name }}</p>
+              <p class="cardPrice">
+                {{ item.price.toLocaleString("ko-KR") }}원
+              </p>
+            </div>
           </div>
         </div>
 
@@ -42,7 +61,6 @@
             <p>12213213123</p>
           </div>
         </div>
-
       </div>
       <div class="additional-items_sub2"></div>
       <!-- 추가메뉴 박스 -->
