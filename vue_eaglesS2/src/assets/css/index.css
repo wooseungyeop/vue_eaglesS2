@@ -152,6 +152,7 @@
   background: linear-gradient(#f9f9f9, #e5e4e4);
   box-shadow: 1px 1px 1px 1px #bebebe;
   font-size: 23px;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .takeaway {
@@ -166,8 +167,24 @@
   background: linear-gradient(#f9f9f9, #e5e4e4);
   box-shadow: 1px 1px 1px 1px #bebebe;
   font-size: 23px;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+.here:hover {
+  box-shadow: 5.5px 4.5px 6px 1px rgba(0, 0, 0, 0.222), 0 4px 4px rgba(0, 0, 0, 0.19);
+}
+
+.here:active {
+  transform: translate(1.5px, 1.5px);
+}
+
+.takeaway:hover {
+  box-shadow: 5.5px 4.5px 6px 1px rgba(0, 0, 0, 0.222), 0 4px 4px rgba(0, 0, 0, 0.22);
+}
+
+.takeaway:active {
+  transform: translate(1.5px, 1.5px);
+}
 .footerBox {
   display: flex;
   justify-content: center;
