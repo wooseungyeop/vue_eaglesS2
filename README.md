@@ -124,10 +124,12 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 </details>
 
 <details>
-<summary> 팀원4 </summary>
+<summary> 이서현 </summary>
 <div markdown="1">
 
-- 내용을 적으시오
+- 24.05.31 레이아웃 완성
+- 24.06.03 디테일 수정
+- 24.06.07 vue 생성
 
 </div>
 </details>
