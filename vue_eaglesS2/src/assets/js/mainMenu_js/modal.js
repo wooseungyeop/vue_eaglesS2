@@ -31,3 +31,10 @@ export function noCountAlert() {
     confirmButtonText: "확인",
   });
 }
+
+export function paymentWait() {
+  swal.fire({
+    text: "결제가 완료되었습니다!",
+    icon: "success"
+  });
+}

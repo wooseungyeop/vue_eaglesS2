@@ -1,6 +1,6 @@
 <script setup>
 const apple = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -8,7 +8,7 @@ const apple = () => {
 };
 
 const kakao = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -16,7 +16,7 @@ const kakao = () => {
 };
 
 const payko = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -24,7 +24,7 @@ const payko = () => {
 };
 
 const zero = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -32,7 +32,7 @@ const zero = () => {
 };
 
 const google = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -40,7 +40,7 @@ const google = () => {
 };
 
 const naver = () => {
-  alert("버튼이 클릭되었습니다");
+ 
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -48,7 +48,7 @@ const naver = () => {
 };
 
 const lpay = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
@@ -56,7 +56,7 @@ const lpay = () => {
 };
 
 const toss = () => {
-  alert("버튼이 클릭되었습니다");
+  
   const element = document.getElementsByClassName("popBox")[0];
   if (element) {
     element.style.display = "block";
