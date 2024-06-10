@@ -1,17 +1,15 @@
 import { defineStore } from "pinia";
-import BurgerData from "@/data/BurgerData.json";
+import axios from "axios";
 
-// 메뉴관련 전역관리 로직
-// Pinia 스토어를 정의하기 위해 defineStore 함수를 사용합니다.
 export const useMenuStore = defineStore("menuStore", {
   // state는 스토어의 상태를 정의하는 객체입니다.
   state: () => ({
-    recommended: BurgerData.recommended, // 추천 메뉴 데이터
-    popuprecommended: BurgerData.popuprecommended, // 팝업 추천 메뉴 데이터
-    setMenu: BurgerData.setMenu, // 세트 메뉴 데이터
-    burgerMenu: BurgerData.burgerMenu, // 버거 메뉴 데이터
-    sideMenu: BurgerData.sideMenu, // 사이드 메뉴 데이터
-    beverageMenu: BurgerData.beverageMenu, // 음료 메뉴 데이터
+    recommended: [], // 추천 메뉴 데이터
+    popuprecommended: [], // 팝업 추천 메뉴 데이터
+    setMenu: [], // 세트 메뉴 데이터
+    burgerMenu: [], // 버거 메뉴 데이터
+    sideMenu: [], // 사이드 메뉴 데이터
+    beverageMenu: [], // 음료 메뉴 데이터
     chunkedMenuItems: [], // 메뉴 아이템을 그룹화한 배열
     selectedItems: [], // 선택된 아이템 상태 추가
   }),
@@ -19,12 +17,20 @@ export const useMenuStore = defineStore("menuStore", {
   actions: {
     // fetchMenuItems는 주어진 카테고리에 따라 메뉴 아이템을 가져오고 그룹화하는 함수입니다.
     fetchMenuItems(category) {
-      this.chunkedMenuItems = this.chunkData(this[category]).map((chunk) =>
-        chunk.map((item) => ({
-          ...item,
-          quantity: 1, // 모든 아이템에 quantity 초기값을 1로 설정
-        }))
-      );
+      axios
+        .get(`http://localhost:8000/${category}`)
+        .then((response) => {
+          this[category] = response.data;
+          this.chunkedMenuItems = this.chunkData(this[category]).map((chunk) =>
+            chunk.map((item) => ({
+              ...item,
+              quantity: 1, // 모든 아이템에 quantity 초기값을 1로 설정
+            }))
+          );
+        })
+        .catch((error) => {
+          console.error("Error fetching menu items:", error);
+        });
     },
     // chunkData는 데이터를 주어진 크기의 청크로 나누는 함수입니다.
     chunkData(data, chunkSize = 3) {
