@@ -7,6 +7,7 @@ export const useMenuStore = defineStore("menuStore", {
   // state는 스토어의 상태를 정의하는 객체입니다.
   state: () => ({
     recommended: BurgerData.recommended, // 추천 메뉴 데이터
+    popuprecommended: BurgerData.popuprecommended, // 팝업 추천 메뉴 데이터
     setMenu: BurgerData.setMenu, // 세트 메뉴 데이터
     burgerMenu: BurgerData.burgerMenu, // 버거 메뉴 데이터
     sideMenu: BurgerData.sideMenu, // 사이드 메뉴 데이터
@@ -34,6 +35,19 @@ export const useMenuStore = defineStore("menuStore", {
         }
         resultArray[chunkIndex].push(item); // 현재 아이템을 해당 청크에 추가
         return resultArray; // 결과 배열 반환
+      }, []);
+    },
+    popUpfetchMenuItems(category) {
+      this.chunkedMenuItems = this.popUpChunkData(this[category]);
+    },
+    popUpChunkData(data, chunkSize = 1) {
+      return data.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index / chunkSize);
+        if (!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [];
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray;
       }, []);
     },
     // 선택된 아이템을 배열에 추가하거나 수량 증가
@@ -68,6 +82,9 @@ export const useMenuStore = defineStore("menuStore", {
       if (item && item.quantity > 1) {
         item.quantity--;
       }
+    },
+    reloadMenuItems() {
+      this.fetchMenuItems("recommended");
     },
   },
 });

@@ -35,27 +35,31 @@ const totalPrice = computed(
       </thead>
 
       <tbody class="menu1">
-        <!-- 메뉴 -->
-        <tr
-          class="formattedPrices"
-          v-for="(item, index) in formattedPrices"
-          :key="index"
-        >
-          <div class="name">
-            {{ item.name }}
-          </div>
-          <div class="option" v-if="item.option">- {{ item.option }}</div>
-          <!-- 수량 -->
-          <td>
-            {{ item.quantity }}
-          </td>
-          <!-- 가격 -->
-          <td style="padding: 16px">{{ item.formattedPrice }}</td>
-        </tr>
+        <th class="menu2">
+          <!-- 메뉴 -->
+          <tr
+            v-for="(item, index) in formattedPrices"
+            :key="index"
+            class="animate__animated animate__fadeInUp"
+          >
+            <div class="menu-name">{{ item.name }}</div>
+            <div v-if="item.option" class="menu-option">
+              - {{ item.option }}
+            </div>
+            <!-- 수량 -->
+            <td class="menu-quantity">
+              {{ item.quantity }}
+            </td>
+            <!-- 가격 -->
+            <td class="menu-price">
+              {{ item.formattedPrice }}
+            </td>
+          </tr>
 
-        <tr class="menu-side1" style="font-size: 15px">
-          <td class="menu-side2" style="padding-top: 10px"></td>
-        </tr>
+          <tr class="menu-side1" style="font-size: 15px">
+            <td class="menu-side2" style="padding-top: 10px"></td>
+          </tr>
+        </th>
       </tbody>
     </table>
   </div>
@@ -63,15 +67,11 @@ const totalPrice = computed(
 
 <style scoped>
 .menu1 > tr {
-  font-size: 20px;
+  font-size: 10px;
 }
-.option {
-  font-size: 18px;
-  padding: 0 0 0 20px;
-}
-.name {
-  font-size: 25px;
-  padding: 5px 0 6px 20px;
+.menu2 {
+  font-size: 15px;
+  padding: 15px;
 }
 
 tr > td:nth-child(1) {
@@ -87,6 +87,6 @@ tr > td:nth-child(2) {
 
 tr > td:nth-child(3) {
   text-align: right;
-  padding: 0 15px 0 0;
+  padding: 1px 20px 1px 1px;
 }
 </style>
