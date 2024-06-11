@@ -24,11 +24,5 @@ const popUpVisible = computed(() => popUpStore.showPopUp);
 </template>
 
 <style scoped>
-.All_Box {
-  width: 800px;
-  height: 100vh;
-  margin: auto;
-  border: 1px solid #000;
-  overflow: hidden;
-}
+
 </style>

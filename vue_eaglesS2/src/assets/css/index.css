@@ -2,8 +2,8 @@
   width: 800px;
   height: 100vh;
   margin: 0 auto;
-  border: 1px solid #0F1822;
-
+  border: 4px solid #999999;
+  background-color: white;
   border-radius: 20px;
 }
 

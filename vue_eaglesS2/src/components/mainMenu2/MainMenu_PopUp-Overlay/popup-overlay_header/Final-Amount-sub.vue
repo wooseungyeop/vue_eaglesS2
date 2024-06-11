@@ -11,12 +11,7 @@ const totalPrice = computed(
       .toLocaleString("ko-KR")} 원`
 );
 
-const formattedPrices = computed(() =>
-  store.selectedItems.map((item) => ({
-    ...item,
-    formattedPrice: `${(item.price * item.quantity).toLocaleString("ko-KR")}원`,
-  }))
-);
+
 </script>
 <template>
   <div class="final-amount_sub">
