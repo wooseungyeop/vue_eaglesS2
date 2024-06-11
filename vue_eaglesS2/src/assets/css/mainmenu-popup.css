@@ -84,8 +84,8 @@
   height: 20px;
   border-radius: 5px;
   content: "";
-  border-top: 5px solid red;
-  border-right: 5px solid red;
+  border-top: 5px solid #ea0029;
+  border-right: 5px solid #ea0029;
   transform: rotate(225deg);
   margin-left: 10px;
   margin-right: 10px;
@@ -123,8 +123,8 @@
   height: 20px;
   border-radius: 5px;
   content: "";
-  border-top: 5px solid red;
-  border-right: 5px solid red;
+  border-top: 5px solid #ea0029;
+  border-right: 5px solid #ea0029;
   transform: rotate(405deg);
   margin-left: 10px;
   margin-right: 10px;
@@ -169,7 +169,7 @@
 }
 
 .previous-button:hover {
-  background-color: red;
+  background-color: #ea0029;
 }
 
 .previous-button:hover a {
@@ -177,7 +177,7 @@
 }
 
 .next-button:hover {
-  background-color: red;
+  background-color: #ea0029;
 }
 
 .next-button:hover a {
@@ -222,7 +222,7 @@
 }
 
 .final-amount_sub div {
-  color: red;
+  color: #ea0029;
   margin-left: 30px;
 }
 
@@ -304,12 +304,12 @@
 }
 
 .previous-button02:hover {
-  background-color: red;
+  background-color: #ea0029;
   color: white;
 }
 
 .next-button02:hover {
-  background-color: red;
+  background-color: #ea0029;
   color: white;
 }
 .next-button02:hover a {
