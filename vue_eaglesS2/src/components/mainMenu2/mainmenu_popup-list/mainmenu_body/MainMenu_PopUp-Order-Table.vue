@@ -27,11 +27,13 @@ const totalPrice = computed(
   <div class="order-table">
     <table class="list">
       <thead class="meue-list">
-        <tr>
-          <td>메뉴</td>
-          <td>수량</td>
-          <td>가격</td>
-        </tr>
+        <th>
+          <tr>
+            <td>메뉴</td>
+            <td>수량</td>
+            <td>가격</td>
+          </tr>
+        </th>
       </thead>
 
       <tbody class="menu1">
@@ -40,12 +42,15 @@ const totalPrice = computed(
           <tr
             v-for="(item, index) in formattedPrices"
             :key="index"
-            class="animate__animated animate__fadeInUp"
+            class="animate__animated animate__fadeInUp margin_TB"
           >
-            <div class="menu-name">{{ item.name }}</div>
-            <div v-if="item.option" class="menu-option">
-              - {{ item.option }}
-            </div>
+            <td class="menu-name">
+              {{ item.name }}
+              <div v-if="item.option" class="menu-option cardName">
+                - {{ item.option }}
+              </div>
+            </td>
+
             <!-- 수량 -->
             <td class="menu-quantity">
               {{ item.quantity }}
@@ -54,10 +59,6 @@ const totalPrice = computed(
             <td class="menu-price">
               {{ item.formattedPrice }}
             </td>
-          </tr>
-
-          <tr class="menu-side1" style="font-size: 15px">
-            <td class="menu-side2" style="padding-top: 10px"></td>
           </tr>
         </th>
       </tbody>
@@ -74,19 +75,40 @@ const totalPrice = computed(
   padding: 15px;
 }
 
-tr > td:nth-child(1) {
-  width: 60%;
+.meue-list tr > td:nth-child(1) {
+  width: 61%;
   padding: 1px 1px 1px 20px;
 }
 
-tr > td:nth-child(2) {
-  width: 25%;
-  text-align: right;
+.meue-list tr > td:nth-child(2) {
+  width: 30%;
+  text-align: center;
   padding: 1px 20px 1px 1px;
 }
 
-tr > td:nth-child(3) {
+.meue-list tr > td:nth-child(3) {
   text-align: right;
   padding: 1px 20px 1px 1px;
+}
+.menu-name {
+  width: 392px;
+  font-size: 25px;
+}
+.menu-name div {
+  font-size: 13px;
+  margin: 10px 0;
+}
+.margin_TB {
+  margin: 10px 0;
+}
+.menu-quantity {
+  font-size: 20px;
+  width: 30%;
+  text-align: center;
+  padding-bottom: 12px;
+}
+.menu-price {
+  font-size: 20px;
+  padding-bottom: 12px;
 }
 </style>

@@ -5,7 +5,7 @@ import { useMenuStore, usePopupStore } from "@/stores/menuStore";
 const store = useMenuStore();
 const popupStore = usePopupStore();
 const scrollPosition = ref(0);
-const itemWidth = 650; // 각 con_col_card의 너비를 가정
+const itemWidth = 635; // 각 con_col_card의 너비를 가정
 
 function scrollItems(direction) {
   console.log(`Scrolling ${direction}`);
