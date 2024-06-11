@@ -65,7 +65,7 @@ const removeAllItems = () => store.clearSelectedItems();
         <table>
           <thead>
             <tr>
-              <th class="col-menu"><div class="menu-name">메뉴이름</div></th>
+              <th class="col-menu"><div class="menu-con">메뉴이름</div></th>
               <th class="col-quantity"><div class="quantity-con">수량</div></th>
               <th class="col-price"><div class="price-con-price">가격</div></th>
             </tr>
