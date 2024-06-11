@@ -111,7 +111,7 @@ const toss = () => {
         <img src=" /toss.svg" />
         <p>toss</p>
       </div>
-      <div class="EasyPayment_box_card2" @click="toss">
+      <div class="EasyPayment_box_card3">
       </div>
     </div>
   </div>

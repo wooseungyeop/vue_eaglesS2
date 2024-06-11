@@ -2,7 +2,7 @@
     <div class="redline">
       <img
         class="imgRedLine"
-        src="../../../../../public/빨간색세줄.png"
+        src="../../../../../public/img/redlogo.png"
         alt="test"
       />
     </div>
