@@ -22,7 +22,7 @@ const totalPrice = computed(
     <tr>
       <td>할인</td>
       <td></td>
-      <td>안해줘</td>
+      <td></td>
     </tr>
 
     <tr>

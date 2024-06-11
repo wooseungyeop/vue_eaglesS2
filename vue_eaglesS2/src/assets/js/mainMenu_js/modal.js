@@ -3,7 +3,7 @@ import swal from "sweetalert2";
 export function NotImplemented() {
   swal.fire({
     title: "Error!",
-    text: "미구현페이지입니다!",
+    html: "미구현페이지입니다!",
     icon: "error",
     confirmButtonColor: "#ea0029",
     confirmButtonText: "확인",

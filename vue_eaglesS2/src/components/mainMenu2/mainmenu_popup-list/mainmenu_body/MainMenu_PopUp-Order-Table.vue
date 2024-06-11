@@ -92,7 +92,7 @@ const totalPrice = computed(
 }
 .menu-name {
   width: 392px;
-  font-size: 25px;
+  font-size: 23px;
 }
 .menu-name div {
   font-size: 13px;
