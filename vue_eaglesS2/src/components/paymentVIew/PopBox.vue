@@ -16,13 +16,14 @@
 </template>
 
 <script setup>
-import { useMenuStore, usePopupStore } from "@/stores/menuStore.js";
+import { useMenuStore, usePopupStore,useOrderCount } from "@/stores/menuStore.js";
 import { useRouter } from "vue-router";
 import swal from "sweetalert2";
 
 const router = useRouter();
 const menuStore = useMenuStore();
 const popupStore = usePopupStore();
+const orderCount = useOrderCount();
 
 const paymentWait = () => {
   swal
@@ -33,6 +34,7 @@ const paymentWait = () => {
       confirmButtonText: "확인",
     })
     .then(() => {
+      menuStore.saveOrder();
       menuStore.clearSelectedItems();
       popupStore.togglePopUp1();
       popupStore.togglePopUp2();

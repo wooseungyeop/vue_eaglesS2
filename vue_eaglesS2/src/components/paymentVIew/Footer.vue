@@ -7,6 +7,7 @@ function ButtonClick() {
   popUpStore.togglePopUp1();
   popUpStore.togglePopUp2();
 }
+
 </script>
 
 <template>

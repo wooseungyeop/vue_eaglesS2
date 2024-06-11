@@ -21,32 +21,23 @@ export const useMenuStore = defineStore("menuStore", {
         .get(`http://localhost:8000/${category}`)
         .then((response) => {
           this[category] = response.data;
-          this.chunkedMenuItems = this.chunkData(this[category]).map((chunk) =>
-            chunk.map((item) => ({
-              ...item,
-              quantity: 1, // 모든 아이템에 quantity 초기값을 1로 설정
-            }))
-          );
+          this.chunkedMenuItems = this.chunkData(this[category], category);
         })
         .catch((error) => {
           console.error("Error fetching menu items:", error);
         });
     },
-    // chunkData는 데이터를 주어진 크기의 청크로 나누는 함수입니다.
-    chunkData(data, chunkSize = 3) {
-      return data.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / chunkSize); // 현재 인덱스를 청크 크기로 나누어 청크 인덱스를 계산
-        if (!resultArray[chunkIndex]) {
-          resultArray[chunkIndex] = []; // 해당 청크 인덱스가 비어있다면 새 배열을 생성
-        }
-        resultArray[chunkIndex].push(item); // 현재 아이템을 해당 청크에 추가
-        return resultArray; // 결과 배열 반환
-      }, []);
+    chunkData(data) {
+      const popupStore = usePopupStore(); // 팝업 스토어 인스턴스를 가져옵니다.
+      const chunkSize = popupStore.showPopUp ? 1 : 3; // showPopUp 상태에 따라 chunkSize 결정
+      return this.chunkDataHelper(data, chunkSize).map((chunk) =>
+        chunk.map((item) => ({
+          ...item,
+          quantity: 1, // 모든 아이템에 quantity 초기값을 1로 설정
+        }))
+      );
     },
-    popUpfetchMenuItems(category) {
-      this.chunkedMenuItems = this.popUpChunkData(this[category]);
-    },
-    popUpChunkData(data, chunkSize = 1) {
+    chunkDataHelper(data, chunkSize) {
       return data.reduce((resultArray, item, index) => {
         const chunkIndex = Math.floor(index / chunkSize);
         if (!resultArray[chunkIndex]) {
@@ -65,6 +56,7 @@ export const useMenuStore = defineStore("menuStore", {
       } else {
         // 새 아이템이면 배열에 추가하고 수량을 1로 설정
         this.selectedItems.push({ ...item, quantity: 1 });
+        console.log('Current selectedItems:', this.selectedItems);
       }
     },
     // 아이템을 배열에서 제거하는 액션
@@ -92,8 +84,47 @@ export const useMenuStore = defineStore("menuStore", {
     reloadMenuItems() {
       this.fetchMenuItems("recommended");
     },
+    saveOrder() { // 영수증 로직
+      const orderStore = useOrderStore(); // 주문 옵션 스토어 사용
+      const orderCountStore = useOrderCount();
+
+      orderCountStore.incrementCount();
+      
+      const orderData = {
+        orderCount: orderCountStore.orderCount, //주문번호
+        items: this.selectedItems.map(item => ({
+          id: item.id, // 메뉴 id
+          name: item.name, // 메뉴 이름
+          quantity: item.quantity, // 수량
+          price: item.price, // 가격
+          total: item.price * item.quantity // 항목별 총액
+        })),
+        total: this.selectedItems.reduce((total, item) => total + item.price * item.quantity, 0), // 총 금액
+        orderOption: orderStore.orderOption // 주문 옵션
+      };
+      axios
+        .post('http://localhost:8000/OrderList', orderData)
+        .then(response => {
+          console.log('주문 저장 성공:', response.data);
+          this.clearSelectedItems(); // 주문 후 선택된 아이템 목록 초기화
+        })
+        .catch(error => {
+          console.error('주문 저장 실패:', error);
+        });
+    },
   },
 });
+
+export const useOrderCount = defineStore("count", {
+  state: () => ({
+    orderCount: 0,
+  }),
+  actions: {
+    incrementCount() {
+      this.orderCount++;
+    }
+  }
+})
 
 // 팝업관련 전역관리 로직
 export const usePopupStore = defineStore("popup", {
@@ -140,6 +171,7 @@ const stores = {
   usePopupStore,
   navRootStore,
   useOrderStore,
+  useOrderCount,
 };
 
 export default stores;

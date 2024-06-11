@@ -21,7 +21,7 @@ watch(
   () => popupStore.showPopUp,
   (newVal) => {
     if (newVal) {
-      store.popUpfetchMenuItems("recommended");
+      store.fetchMenuItems("recommended");
     } else {
       store.reloadMenuItems(); // 팝업이 꺼질 때 초기화
     }
