@@ -299,6 +299,13 @@
   line-height: 140%;
 }
 
+.menu-con {
+  font-weight: 700;
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 140%;
+}
+
 .menu-option {
   font-family: "SUIT-Regular";
   font-weight: 700;
