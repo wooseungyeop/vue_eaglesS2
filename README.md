@@ -35,15 +35,19 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 </div>
 
 <div>
-  <p>
     프로젝트 목표 개발 기간 : 24.05.23 - 06.12
-    <br>
+    </br>
     프로젝트 리포지토리 변경 : 24.06.05
-    <br>
-    [이전링크](https://github.com/wooseungyeop/js_eaglesS2)
-
-  </p>
+    </br>
 </div>
+
+</br>
+
+👉 [이전리포지토리](https://github.com/wooseungyeop/js_eaglesS2)
+
+</br>
+
+👉 [PPT자료](https://www.canva.com/design/DAGHsNAxnR4/Cl1LHvoaVhNq_Dx72oVfow/edit?utm_content=DAGHsNAxnR4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 <br><br>
 
 <div align="left">
