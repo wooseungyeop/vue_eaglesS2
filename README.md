@@ -55,13 +55,7 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 <br><br>
 
 <div align="left">
-    <H3> 3. 객체-관계 모델 - ERD </H3>
-</div>
-
-<br><br>
-
-<div align="left">
-    <H3> 4. 순서도 - Flow Chart </H3>
+    <H3> 3. 순서도 - Flow Chart </H3>
 </div>
 
 <img width="2752" alt="햄버거키오스크_플로우차트" src="https://github.com/Stjoo0925/07_Vue/assets/166350549/f6925800-d86e-476b-a65d-e497a552f922">
@@ -69,22 +63,7 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 <br><br>
 
 <div align="left">
-    <H3> 5. 상세 설명 </H3>
-</div>
-
-<div>
-  <p>
-    1. 키오스크 시작 화면: </br></br>
-    2. 키오스크 메인메뉴 화면: </br></br>
-    3. 키오스크 주문 상세 페이지: </br></br>
-    4. 키오스크 결제 페이지: </br></br>
-
-  </p>
-</div>
-<br><br>
-
-<div align="left">
-    <H3> 6. 진행 상황 </H3>
+    <H3> 4. 진행 상황 </H3>
 <details>
 <summary> 우승엽 </summary>
 <div markdown="1">
