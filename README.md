@@ -51,7 +51,7 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 </div>
 
 <details>
-<summary> 우승 </summary>
+<summary> 우승엽 </summary>
 <div markdown="1">
 
 - 24.05.28 :  html + css 뼈대 준비
