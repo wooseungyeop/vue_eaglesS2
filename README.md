@@ -49,6 +49,10 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 <div align="left">
     <H3> 2. 사용 기술 </H3>
 </div>
+
+<details>
+<summary> 우승엽 </summary>
+<div markdown="1">
 - 24.05.28 : html + css 뼈대 준비
 - 24.05.30 : html + css 뼈대 완성
 - 24.06.02 : html + css 코드 유지보수
@@ -56,7 +60,6 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 - 24.06.07 : vue 기능 추가 및 css 기능 추가
 - 24.06.11 : vue 기능 유지보수 및 코드 리뷰
 - 24.06.12 : 추가하고 싶었던 기능들이나 css 추가 및 발표 준비
-
 </div>
 </details>
 
