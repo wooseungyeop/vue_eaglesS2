@@ -141,10 +141,13 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 </details>
 
 <details>
-<summary> 팀원5 </summary>
+<summary> 이은석 </summary>
 <div markdown="1">
 
-- 내용을 적으시오
-
+- 24.05.27 팀 전체 프로젝트 레이아웃 및 공통 css 제작
+- 24.05.28 승엽 및 정환님 레이아웃 및 css 제작 (보조 역활)
+- 24.06.01 Vue 버전 가이드 라인 제작
+- 24.06.05 Css 디테일 추가 및 수정
+- 24.06.10 전반적인 Vue 및 Css 수정
 </div>
 </details>
