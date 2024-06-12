@@ -17,7 +17,9 @@ const payment = () => {
 
 <template>
   <div class="popup-buttons02">
-    <div class="previous-button02" @click="ButtonClick">이전</div>
+  <a @click="ButtonClick">
+      <div   class="previous-button02">이전</div>
+  </a>
 
     <router-link :to="{ path: '/Mainpayment' }">
       <div class="next-button02">다음</div>
