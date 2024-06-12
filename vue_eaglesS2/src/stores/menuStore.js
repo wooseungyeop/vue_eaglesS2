@@ -18,7 +18,7 @@ export const useMenuStore = defineStore("menuStore", {
     // fetchMenuItems는 주어진 카테고리에 따라 메뉴 아이템을 가져오고 그룹화하는 함수입니다.
     fetchMenuItems(category) {
       axios
-        .get(`http://localhost:8000/${category}`)
+        .get(`http://1.214.19.22:8002/${category}`)
         .then((response) => {
           this[category] = response.data;
           this.chunkedMenuItems = this.chunkData(this[category], category);
@@ -103,7 +103,7 @@ export const useMenuStore = defineStore("menuStore", {
         orderOption: orderStore.orderOption // 주문 옵션
       };
       axios
-        .post('http://localhost:8000/OrderList', orderData)
+        .post('http://1.214.19.22:8002/OrderList', orderData)
         .then(response => {
           console.log('주문 저장 성공:', response.data);
           this.clearSelectedItems(); // 주문 후 선택된 아이템 목록 초기화
