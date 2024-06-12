@@ -50,29 +50,7 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
     <H3> 2. 사용 기술 </H3>
 </div>
 
-![사용기술](https://github.com/wooseungyeop/js_eaglesS2/assets/166350549/5f8d8330-3be1-4d8a-8c58-1ca5eca17113)
-
-<br><br>
-
-<div align="left">
-    <H3> 3. 순서도 - Flow Chart </H3>
-</div>
-
-<img width="2752" alt="햄버거키오스크_플로우차트" src="https://github.com/Stjoo0925/07_Vue/assets/166350549/f6925800-d86e-476b-a65d-e497a552f922">
-
-<br><br>
-
-<div align="left">
-    <H3> 4. 진행 상황 </H3>
-<details>
-<summary> 우승엽 </summary>
-<div markdown="1">
-
-- 24.05.29 : 주문 리스트 뼈대 부분 완성
-- 24.05.31 : 주문 리스트 & 결제 금액 뼈대 완성
-- 24.06.03 : 주문 리스트 & 결제 금액 vue 이동
-- 24.06.06 : vue 기능 추가
-- 24.06.10 : vue 유지보수
+![사용기술](https://github.com/wooseungyeop/js_eaglesS2/assets/드 유지보수
 - 24.06.12 : 발표 준비
 
 </div>
@@ -126,7 +104,7 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 <div markdown="1">
 
 - 24.05.27 팀 전체 프로젝트 레이아웃 및 공통 css 제작
-- 24.05.28 승엽 및 정환님 레이아웃 및 css 제작 (보조 역활)
+- 24.05.28 승엽 및 정환님 레이아웃 및 css 제작 (보조 역할)
 - 24.06.01 Vue 버전 가이드 라인 제작
 - 24.06.05 Css 디테일 추가 및 수정
 - 24.06.10 전반적인 Vue 및 Css 수정
