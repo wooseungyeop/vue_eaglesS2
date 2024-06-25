@@ -47,7 +47,7 @@ Js_Eagles와 함께라면 미래는 더욱 밝고, 무한한 가능성이 열립
 <br><br>
 
 <div align="left">
-    <H3> 2. 사용 기술 </H3>
+    <H3> 2. 작업 내용 </H3>
 </div>
 
 <details>
